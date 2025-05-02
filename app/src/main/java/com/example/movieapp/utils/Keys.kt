@@ -9,4 +9,5 @@ object Keys {
     const val TRENDING_MOVIE_ENDPOINT ="trending/movie/week"
     const val MOVIE_ID ="id"
     const val ACTOR_ID ="id"
+    const val API_KEY = "5ead30eff86e4911e669a5d88b620dbb"
 }
