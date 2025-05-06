@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.PageSize
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -24,6 +25,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.movieapp.presentation.home.components.TopContent
 import com.example.movieapp.presentation.home.widgets.BodyContent
+import com.example.movieapp.presentation.widgets.LoadingScreen
 import com.example.movieapp.ui.theme.DefaultPadding
 import com.example.movieapp.ui.theme.ItemSpacing
 import kotlinx.coroutines.delay
@@ -86,6 +88,7 @@ fun HomeScreen(
                 HorizontalPager(
                     state = pagerState,
                     contentPadding = PaddingValues(all = DefaultPadding),
+                    pageSize = PageSize.Fill,
                     pageSpacing = ItemSpacing
                 ) { page ->
                     if (isAutoScrolling) {
@@ -95,8 +98,8 @@ fun HomeScreen(
                         ) { index ->
                             TopContent(
                                 modifier = Modifier
-                                    .align(Alignment.TopCenter)
-                                    .heightIn(min = topItemHeight),
+                                    .heightIn(min = topItemHeight)
+                                    .align(Alignment.TopCenter),
                                 movie = state.discoverMovies[index],
                                 onMovieClick = { onMovieClick(it) }
                             )
@@ -104,8 +107,8 @@ fun HomeScreen(
                     } else {
                         TopContent(
                             modifier = Modifier
-                                .align(Alignment.TopCenter)
-                                .heightIn(min = topItemHeight),
+                                .heightIn(min = topItemHeight)
+                                .align(Alignment.TopCenter),
                             movie = state.discoverMovies[page],
                             onMovieClick = { onMovieClick(it) }
                         )
@@ -123,4 +126,6 @@ fun HomeScreen(
             }
         }
     }
+
+    LoadingScreen(isLoading = state.isLoading)
 }

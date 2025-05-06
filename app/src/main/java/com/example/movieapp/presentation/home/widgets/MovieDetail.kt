@@ -35,7 +35,7 @@ fun MovieDetail(
     genre: List<String>,
 ) {
     Column(
-        modifier = Modifier
+        modifier = modifier
             .padding(all = DefaultPadding)
     ) {
         MovieCard {
