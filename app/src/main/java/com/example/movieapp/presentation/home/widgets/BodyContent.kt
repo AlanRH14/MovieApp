@@ -9,7 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.example.movieapp.R
-import com.example.movieapp.domain.models.Movie
+import com.example.movieapp.domain.models.movie.Movie
 import com.example.movieapp.presentation.home.components.HeaderMovieList
 import com.example.movieapp.presentation.home.components.MovieCoverImage
 

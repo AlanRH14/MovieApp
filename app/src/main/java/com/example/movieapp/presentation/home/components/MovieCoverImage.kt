@@ -26,7 +26,7 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.movieapp.R
-import com.example.movieapp.domain.models.Movie
+import com.example.movieapp.domain.models.movie.Movie
 import com.example.movieapp.ui.theme.ItemSpacing
 import com.example.movieapp.ui.theme.VerySmallPadding
 import com.example.movieapp.utils.Keys.BASE_IMAGE_URL
