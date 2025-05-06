@@ -2,7 +2,7 @@ package com.example.movieapp.presentation.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.movieapp.domain.repository.MovieRepository
+import com.example.movieapp.domain.repository.movie.MovieRepository
 import com.example.movieapp.utils.collectAndHandle
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
