@@ -1,4 +1,4 @@
-package com.example.movieapp.data.mapper_impl
+package com.example.movieapp.data.mapper_impl.movie
 
 import com.example.movieapp.common.movie.ApiMapper
 import com.example.movieapp.data.remote.models.movie.MovieDto

@@ -1,7 +1,7 @@
 package com.example.movieapp.di
 
 import com.example.movieapp.common.movie.ApiMapper
-import com.example.movieapp.data.mapper_impl.MovieApiMapperImpl
+import com.example.movieapp.data.mapper_impl.movie.MovieApiMapperImpl
 import com.example.movieapp.data.remote.api.MovieApiService
 import com.example.movieapp.data.remote.models.movie.MovieDto
 import com.example.movieapp.data.remote.repository.MovieRepositoryImpl
