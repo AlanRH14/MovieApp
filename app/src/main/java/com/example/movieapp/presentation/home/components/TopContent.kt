@@ -14,7 +14,7 @@ import androidx.compose.ui.res.stringResource
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.movieapp.R
-import com.example.movieapp.domain.models.Movie
+import com.example.movieapp.domain.models.movie.Movie
 import com.example.movieapp.presentation.home.widgets.MovieDetail
 import com.example.movieapp.ui.theme.SmallPadding
 import com.example.movieapp.utils.Keys.BASE_IMAGE_URL

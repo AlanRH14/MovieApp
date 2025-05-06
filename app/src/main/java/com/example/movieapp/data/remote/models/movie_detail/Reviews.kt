@@ -1,10 +1,10 @@
-package com.example.movieapp.data.remote.models
+package com.example.movieapp.data.remote.models.movie_detail
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class MovieDto(
+data class Reviews(
     @SerialName("page")
     val page: Int? = null,
     @SerialName("results")

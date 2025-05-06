@@ -1,6 +1,6 @@
 package com.example.movieapp.data.remote.api
 
-import com.example.movieapp.data.remote.models.MovieDto
+import com.example.movieapp.data.remote.models.movie.MovieDto
 import com.example.movieapp.utils.Keys.API_KEY
 import com.example.movieapp.utils.Keys.MOVIE_ENDPOINT
 import com.example.movieapp.utils.Keys.TRENDING_MOVIE_ENDPOINT
