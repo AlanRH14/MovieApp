@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.movieapp.R
 import com.example.movieapp.presentation.home.components.MovieCard
@@ -37,21 +38,25 @@ fun MovieDetail(
         modifier = Modifier
             .padding(all = DefaultPadding)
     ) {
-        Row(
-            modifier = Modifier
-                .padding(all = VerySmallPadding),
-            horizontalArrangement = Arrangement.Center,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Icon(
-                imageVector = Icons.Filled.Star,
-                contentDescription = stringResource(R.string.rating_icon),
-                tint = Color.Yellow
-            )
-            Spacer(modifier = Modifier.width(VerySmallPadding))
-            Text(text = rating.toString())
+        MovieCard {
+            Row(
+                modifier = Modifier
+                    .padding(all = VerySmallPadding),
+                horizontalArrangement = Arrangement.Center,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Icon(
+                    imageVector = Icons.Filled.Star,
+                    contentDescription = stringResource(R.string.rating_icon),
+                    tint = Color.Yellow
+                )
+                Spacer(modifier = Modifier.width(VerySmallPadding))
+                Text(text = rating.toString())
+            }
         }
+
         Spacer(modifier = Modifier.height(ItemSpacing))
+
         Text(
             text = title,
             style = MaterialTheme.typography.titleLarge,
@@ -59,6 +64,7 @@ fun MovieDetail(
             maxLines = 1,
             color = Color.White
         )
+
         Spacer(modifier = Modifier.height(ItemSpacing))
 
         MovieCard {
@@ -84,4 +90,14 @@ fun MovieDetail(
             }
         }
     }
+}
+
+@Preview
+@Composable
+fun MovieDetailPreview() {
+    MovieDetail(
+        rating = 7.5,
+        title = "Doctor Strange",
+        genre = listOf("Action", "Adventure", "Fantasy")
+    )
 }
