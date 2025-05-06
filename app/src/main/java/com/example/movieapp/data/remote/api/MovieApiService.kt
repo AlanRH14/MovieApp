@@ -17,7 +17,7 @@ interface MovieApiService {
 
     @GET(TRENDING_MOVIE_ENDPOINT)
     suspend fun fetchTrendingMovie(
-        @Query("") apiKey: String = API_KEY,
+        @Query("api_key") apiKey: String = API_KEY,
         @Query("include_adult") includeAdult: Boolean = false
     ): MovieDto
 }
