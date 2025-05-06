@@ -4,4 +4,7 @@
     <string name="rating_icon">Rating Icon</string>
     <string name="more_discover_movies_button">More discover movies button</string>
     <string name="discover_movies">Discover Movies</string>
+    <string name="image_movie_cover">Image Movie Cover</string>
+    <string name="bookmark_icon">Bookmark Icon</string>
+    <string name="trending_now">Trending now</string>
 </resources>

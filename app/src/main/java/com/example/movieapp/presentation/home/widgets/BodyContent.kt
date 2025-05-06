@@ -20,6 +20,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import com.example.movieapp.R
 import com.example.movieapp.domain.models.Movie
+import com.example.movieapp.presentation.home.components.HeaderMovieList
+import com.example.movieapp.presentation.home.components.MovieCoverImage
 import com.example.movieapp.ui.theme.ItemSpacing
 
 @Composable
@@ -32,31 +34,25 @@ fun BodyContent(
 
     LazyColumn(modifier = modifier) {
         item {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(all = ItemSpacing),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    text = stringResource(R.string.discover_movies),
-                    style = MaterialTheme.typography.titleLarge,
-                    fontWeight = FontWeight.Bold,
-                )
-                IconButton(
-                    onClick = { /*TODO*/ }
-                ) {
-                    Icon(
-                        imageVector = Icons.AutoMirrored.Filled.ArrowForward,
-                        contentDescription = stringResource(R.string.more_discover_movies_button)
+            HeaderMovieList(title = stringResource(R.string.discover_movies))
+
+            LazyRow {
+                items(discoverMovies) { discoverMovie ->
+                    MovieCoverImage(
+                        movie = discoverMovie,
+                        onMovieClick = onMovieClick
                     )
                 }
             }
 
-            LazyRow {
-                items(discoverMovies) {
+            HeaderMovieList(title = stringResource(R.string.trending_now))
 
+            LazyRow {
+                items(trendingMovies) { trendingMovie ->
+                    MovieCoverImage(
+                        movie = trendingMovie,
+                        onMovieClick = onMovieClick
+                    )
                 }
             }
         }

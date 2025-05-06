@@ -4,7 +4,7 @@ import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.interaction.collectIsDraggedAsState
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.heightIn
@@ -23,6 +23,7 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.movieapp.presentation.home.components.TopContent
+import com.example.movieapp.presentation.home.widgets.BodyContent
 import com.example.movieapp.ui.theme.DefaultPadding
 import com.example.movieapp.ui.theme.ItemSpacing
 import kotlinx.coroutines.delay
@@ -70,13 +71,18 @@ fun HomeScreen(
                 maxLines = 2
             )
         }
+
         AnimatedVisibility(
             visible = !state.isLoading && state.error == null
         ) {
-            Column(
+            BoxWithConstraints(
                 modifier = Modifier
                     .fillMaxSize()
             ) {
+                val boxHeight = maxHeight
+                val topItemHeight = boxHeight * .45F
+                val bodyItemHeight = boxHeight * .55F
+
                 HorizontalPager(
                     state = pagerState,
                     contentPadding = PaddingValues(all = DefaultPadding),
@@ -89,6 +95,7 @@ fun HomeScreen(
                         ) { index ->
                             TopContent(
                                 modifier = Modifier
+                                    .align(Alignment.TopCenter)
                                     .heightIn(min = topItemHeight),
                                 movie = state.discoverMovies[index],
                                 onMovieClick = { onMovieClick(it) }
@@ -97,12 +104,22 @@ fun HomeScreen(
                     } else {
                         TopContent(
                             modifier = Modifier
+                                .align(Alignment.TopCenter)
                                 .heightIn(min = topItemHeight),
                             movie = state.discoverMovies[page],
                             onMovieClick = { onMovieClick(it) }
                         )
                     }
                 }
+
+                BodyContent(
+                    modifier = Modifier
+                        .align(Alignment.BottomCenter)
+                        .heightIn(max = bodyItemHeight),
+                    discoverMovies = state.discoverMovies,
+                    trendingMovies = state.trendingMovies,
+                    onMovieClick = onMovieClick
+                )
             }
         }
     }
