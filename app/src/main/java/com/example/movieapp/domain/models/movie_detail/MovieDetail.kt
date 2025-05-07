@@ -2,6 +2,7 @@ package com.example.movieapp.domain.models.movie_detail
 
 data class MovieDetail(
     val backdropPath: String,
+    val genreIds: List<String>,
     val id: Int,
     val originalLanguage: String,
     val originalTitle: String,
@@ -15,5 +16,7 @@ data class MovieDetail(
     val video: Boolean,
     val cast: List<Cast>,
     val language: List<String>,
-    val reviews: Reviews,
+    val productionCountries: List<String>,
+    val reviews: List<Reviews>,
+    val runtime: String,
 )

@@ -38,7 +38,7 @@ data class MovieDetailDto(
     @SerialName("production_companies")
     val productionCompanies: List<ProductionCompany?>? = null,
     @SerialName("production_countries")
-    val productionCountries: List<ProductionCountry?>? = null,
+    val productionCountries: List<ProductionCountryDto?>? = null,
     @SerialName("release_date")
     val releaseDate: String? = null,
     @SerialName("revenue")

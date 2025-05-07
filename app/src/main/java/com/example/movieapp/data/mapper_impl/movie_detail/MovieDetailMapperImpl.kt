@@ -1,8 +1,11 @@
 package com.example.movieapp.data.mapper_impl.movie_detail
 
 import com.example.movieapp.common.movie.ApiMapper
+import com.example.movieapp.data.remote.models.movie_detail.CastDto
 import com.example.movieapp.data.remote.models.movie_detail.MovieDetailDto
+import com.example.movieapp.domain.models.movie_detail.Cast
 import com.example.movieapp.domain.models.movie_detail.MovieDetail
+import com.example.movieapp.domain.models.movie_detail.Reviews
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -20,7 +23,63 @@ class MovieDetailMapperImpl : ApiMapper<MovieDetail, MovieDetailDto> {
         return formattedDate
     }
 
+    private fun convertMinutesToHours(minutes: Int): String {
+        val hours = minutes / 60
+        val remainingMinutes = minutes % 60
+        return "${hours}h:${remainingMinutes}m"
+    }
+
+    private fun formatEmptyValue(value: String?, default: String = ""): String {
+        return if (value.isNullOrEmpty()) {
+            "Unknown $default"
+        } else {
+            value
+        }
+    }
+
+    private fun formatCast(castDto: List<CastDto?>?): List<Cast> {
+        return castDto?.map {
+            val genderRole = if (it?.gender == 2) "Actor" else "Actrees"
+            Cast(
+                id = it?.id ?: 0,
+                name = formatEmptyValue(it?.name),
+                genderRole = genderRole,
+                character = formatEmptyValue(it?.character),
+                profilePath = it?.profilePath ?: ""
+            )
+        } ?: emptyList()
+    }
+
     override fun mapToDomain(apiDto: MovieDetailDto): MovieDetail {
-        TODO("Not yet implemented")
+        return MovieDetail(
+            backdropPath = formatEmptyValue(apiDto.backdropPath),
+            genreIds = apiDto.genres?.map { formatEmptyValue(it?.name) } ?: emptyList(),
+            id = apiDto.id ?: 0,
+            originalLanguage = formatEmptyValue(apiDto.originalLanguage, "language"),
+            originalTitle = formatEmptyValue(apiDto.originalTitle, "title"),
+            overview = formatEmptyValue(apiDto.overview, "overview"),
+            popularity = apiDto.popularity ?: 0.0,
+            posterPath = formatEmptyValue(apiDto.posterPath),
+            releaseDate = formatEmptyValue(apiDto.releaseDate, "date"),
+            title = formatEmptyValue(apiDto.title, "title"),
+            voteAverage = apiDto.voteAverage ?: 0.0,
+            voteCount = apiDto.voteCount ?: 0,
+            video = apiDto.video ?: false,
+            cast = formatCast(apiDto.credits?.cast),
+            language = apiDto.spokenLanguages?.map { formatEmptyValue(it?.englishName) }
+                ?: emptyList(),
+            productionCountries = apiDto.productionCountries?.map { formatEmptyValue(it?.name) }
+                ?: emptyList(),
+            reviews = apiDto.reviews?.results?.map {
+                Reviews(
+                    author = formatEmptyValue(it?.author),
+                    content = formatEmptyValue(it?.content),
+                    createdAt = formatTimeStamp(time = it?.createdAt ?: "0"),
+                    id = formatEmptyValue(it?.id),
+                    rating = it?.authorDetails?.rating ?: 0.0
+                )
+            } ?: emptyList(),
+            runtime = convertMinutesToHours(apiDto.runtime ?: 0)
+        )
     }
 }
