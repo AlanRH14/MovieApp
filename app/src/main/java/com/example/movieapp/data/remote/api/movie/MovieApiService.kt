@@ -1,4 +1,4 @@
-package com.example.movieapp.data.remote.api
+package com.example.movieapp.data.remote.api.movie
 
 import com.example.movieapp.data.remote.models.movie.MovieDto
 import com.example.movieapp.utils.Keys.API_KEY
