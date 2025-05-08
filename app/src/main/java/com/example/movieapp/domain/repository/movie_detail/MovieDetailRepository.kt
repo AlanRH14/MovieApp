@@ -6,7 +6,7 @@ import com.example.movieapp.utils.Response
 import kotlinx.coroutines.flow.Flow
 
 interface MovieDetailRepository {
-    fun fetchMovieDetail(movie: Int): Flow<Response<MovieDetail>>
+    fun fetchMovieDetail(movieId: Int): Flow<Response<MovieDetail>>
 
     fun fetchMovie(): Flow<Response<List<Movie>>>
 }
