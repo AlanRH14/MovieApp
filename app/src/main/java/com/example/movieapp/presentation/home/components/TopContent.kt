@@ -13,7 +13,7 @@ import com.example.movieapp.R
 import com.example.movieapp.domain.models.movie.Movie
 import com.example.movieapp.presentation.components.GenericImage
 import com.example.movieapp.presentation.home.widgets.MovieDetail
-import com.example.movieapp.ui.theme.SmallPadding
+import com.example.movieapp.ui.theme.ItemSpacing
 
 @Composable
 fun TopContent(
@@ -37,7 +37,7 @@ fun TopContent(
         MovieDetail(
             modifier = Modifier
                 .align(Alignment.BottomStart)
-                .padding(SmallPadding),
+                .padding(ItemSpacing),
             rating = movie.voteAverage,
             title = movie.title,
             genre = movie.genreIds
