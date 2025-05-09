@@ -19,17 +19,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import coil.compose.AsyncImage
-import coil.request.ImageRequest
 import com.example.movieapp.R
 import com.example.movieapp.domain.models.movie.Movie
+import com.example.movieapp.presentation.components.GenericImage
 import com.example.movieapp.ui.theme.ItemSpacing
 import com.example.movieapp.ui.theme.VerySmallPadding
-import com.example.movieapp.utils.Keys.BASE_IMAGE_URL
 
 @Composable
 fun MovieCoverImage(
@@ -37,24 +33,18 @@ fun MovieCoverImage(
     movie: Movie,
     onMovieClick: (id: Int) -> Unit
 ) {
-    val imageRequest = ImageRequest.Builder(LocalContext.current)
-        .data("$BASE_IMAGE_URL${movie.posterPath}")
-        .crossfade(true)
-        .build()
-
     Box(
         modifier = modifier
             .size(width = 150.dp, height = 250.dp)
             .padding(ItemSpacing)
             .clickable { onMovieClick(movie.id) },
     ) {
-        AsyncImage(
+        GenericImage(
             modifier = Modifier
                 .matchParentSize()
                 .clip(MaterialTheme.shapes.medium)
                 .shadow(elevation = 4.dp),
-            model = imageRequest,
-            contentScale = ContentScale.Crop,
+            pathImage = movie.posterPath,
             contentDescription = stringResource(R.string.image_movie_cover),
         )
         MovieCard(
