@@ -167,6 +167,16 @@ fun DetailBodyContent(
                         infoItem = movieDetail.productionCountries,
                         title = stringResource(R.string.production_countries)
                     )
+
+                    Spacer(modifier = Modifier.height(ItemSpacing))
+
+                    Text(
+                        text = "Reviews",
+                        style = MaterialTheme.typography.titleLarge,
+                        fontWeight = FontWeight.Bold,
+                    )
+
+                    Spacer(modifier = Modifier.height(ItemSpacing))
                 }
             }
         }
