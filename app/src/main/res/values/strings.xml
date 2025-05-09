@@ -8,4 +8,5 @@
     <string name="bookmark_icon">Bookmark Icon</string>
     <string name="trending_now">Trending now</string>
     <string name="detail_top_image">Detail Top Image</string>
+    <string name="play_arrow_icon">Play Arrow Icon</string>
 </resources>

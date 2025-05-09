@@ -100,7 +100,7 @@ fun MovieDetail(
 
 @Preview
 @Composable
-fun MovieDetailPreview() {
+private fun MovieDetailPreview() {
     MovieDetail(
         rating = 7.5,
         title = "Doctor Strange",
