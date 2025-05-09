@@ -14,7 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.example.movieapp.presentation.detail.components.DetailTopContent
+import com.example.movieapp.presentation.detail.widgets.DetailTopContent
 
 @Composable
 fun MovieDetailScreen(

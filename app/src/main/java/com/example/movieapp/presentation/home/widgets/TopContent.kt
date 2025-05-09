@@ -1,4 +1,4 @@
-package com.example.movieapp.presentation.home.components
+package com.example.movieapp.presentation.home.widgets
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -12,7 +12,6 @@ import androidx.compose.ui.res.stringResource
 import com.example.movieapp.R
 import com.example.movieapp.domain.models.movie.Movie
 import com.example.movieapp.presentation.components.GenericImage
-import com.example.movieapp.presentation.home.widgets.MovieDetail
 import com.example.movieapp.ui.theme.ItemSpacing
 
 @Composable

@@ -23,7 +23,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.example.movieapp.presentation.home.components.TopContent
+import com.example.movieapp.presentation.home.widgets.TopContent
 import com.example.movieapp.presentation.home.widgets.BodyContent
 import com.example.movieapp.presentation.widgets.LoadingScreen
 import com.example.movieapp.ui.theme.DefaultPadding

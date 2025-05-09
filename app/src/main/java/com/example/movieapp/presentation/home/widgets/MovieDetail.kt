@@ -86,7 +86,7 @@ fun MovieDetail(
                         textAlign = TextAlign.Center,
                         text = genreText,
                     )
-                    if (index < genre.size - 1) {
+                    if (index < genre.lastIndex) {
                         VerticalDivider(
                             modifier = Modifier.height(16.dp),
                             thickness = 2.dp,

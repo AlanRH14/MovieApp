@@ -1,4 +1,4 @@
-package com.example.movieapp.presentation.detail.components
+package com.example.movieapp.presentation.detail.widgets
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -10,6 +10,7 @@ import androidx.compose.ui.res.stringResource
 import com.example.movieapp.R
 import com.example.movieapp.domain.models.movie_detail.MovieDetail
 import com.example.movieapp.presentation.components.GenericImage
+import com.example.movieapp.presentation.detail.components.DetailComponent
 
 @Composable
 fun DetailTopContent(
