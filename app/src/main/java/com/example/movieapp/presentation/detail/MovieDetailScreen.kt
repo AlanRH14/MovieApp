@@ -14,7 +14,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.example.movieapp.presentation.detail.widgets.DetailBodyContent
 import com.example.movieapp.presentation.detail.widgets.DetailTopContent
+import com.example.movieapp.presentation.widgets.LoadingScreen
 
 @Composable
 fun MovieDetailScreen(
@@ -26,7 +28,7 @@ fun MovieDetailScreen(
 ) {
     val state by movieDetailViewModel.detailState.collectAsStateWithLifecycle()
 
-    Box(modifier = Modifier.fillMaxWidth()) {
+    Box(modifier = modifier.fillMaxWidth()) {
         AnimatedVisibility(
             modifier = Modifier.align(Alignment.TopCenter),
             visible = state.error != null,
@@ -55,9 +57,24 @@ fun MovieDetailScreen(
                             .height(topItemHeight)
                             .align(Alignment.TopCenter),
                         movieDetail = movieDetail,
+                        onNavigateUp = onNavigateUp
+                    )
+
+                    DetailBodyContent(
+                        modifier = Modifier
+                            .align(Alignment.BottomCenter)
+                            .height(bodyItemHeight),
+                        movieDetail = movieDetail,
+                        movies = state.movies,
+                        isMovieLoading = state.isMovieLoading,
+                        fetchMovies = movieDetailViewModel::fetchMovie,
+                        onMovieClick = onMovieClick,
+                        onActorClick = onActorClick
                     )
                 }
             }
         }
     }
+
+    LoadingScreen(isLoading = state.isLoading)
 }

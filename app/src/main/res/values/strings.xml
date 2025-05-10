@@ -16,4 +16,5 @@
     <string name="production_countries">Production Countries</string>
     <string name="btn_collapse_reviews">Collapse</string>
     <string name="btn_more_reviews">More…</string>
+    <string name="navigate_up_icon">Navigate Up Icon</string>
 </resources>
