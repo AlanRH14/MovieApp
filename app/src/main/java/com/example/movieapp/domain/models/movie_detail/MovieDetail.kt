@@ -17,6 +17,6 @@ data class MovieDetail(
     val cast: List<Cast>,
     val language: List<String>,
     val productionCountries: List<String>,
-    val reviews: List<Reviews>,
+    val reviews: List<Review>,
     val runtime: String,
 )

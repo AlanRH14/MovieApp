@@ -14,4 +14,6 @@
     <string name="cast_image">Cast Image</string>
     <string name="spoken_language">Spoken language</string>
     <string name="production_countries">Production Countries</string>
+    <string name="btn_collapse_reviews">Collapse</string>
+    <string name="btn_more_reviews">More…</string>
 </resources>

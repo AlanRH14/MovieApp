@@ -177,6 +177,7 @@ fun DetailBodyContent(
                     )
 
                     Spacer(modifier = Modifier.height(ItemSpacing))
+
                 }
             }
         }
