@@ -12,7 +12,6 @@ import androidx.navigation.navArgument
 import com.example.movieapp.presentation.detail.MovieDetailScreen
 import com.example.movieapp.presentation.home.HomeScreen
 
-
 @Composable
 fun NavigationHost(
     modifier: Modifier = Modifier,
