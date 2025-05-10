@@ -1,4 +1,4 @@
-package com.example.movieapp.presentation.detail.components
+package com.example.movieapp.presentation.detail.widgets
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.example.movieapp.R
 import com.example.movieapp.domain.models.movie_detail.Review
+import com.example.movieapp.presentation.detail.components.ReviewItem
 import com.example.movieapp.ui.theme.ItemSpacing
 
 @Composable
@@ -40,7 +41,7 @@ fun Reviews(
         stringResource(R.string.btn_more_reviews)
     }
 
-    Column {
+    Column(modifier = modifier) {
         movieReviews.forEach { review ->
             ReviewItem(review = review)
 

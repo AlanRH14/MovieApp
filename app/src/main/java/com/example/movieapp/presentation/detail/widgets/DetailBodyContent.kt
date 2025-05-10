@@ -178,6 +178,16 @@ fun DetailBodyContent(
 
                     Spacer(modifier = Modifier.height(ItemSpacing))
 
+                    Reviews(reviews = movieDetail.reviews)
+
+                    Spacer(modifier = Modifier.height(ItemSpacing))
+
+                    MoreLikeThis(
+                        fetchMovies = fetchMovies,
+                        isMovieLoading = isMovieLoading,
+                        movies = movies,
+                        onMovieClick = onMovieClick
+                    )
                 }
             }
         }
