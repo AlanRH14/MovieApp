@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.movieapp.R
@@ -41,7 +42,7 @@ fun MovieDetail(
         MovieCard {
             Row(
                 modifier = Modifier
-                    .padding(all = VerySmallPadding),
+                    .padding(all = ItemSpacing),
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -50,7 +51,9 @@ fun MovieDetail(
                     contentDescription = stringResource(R.string.rating_icon),
                     tint = Color.Yellow
                 )
+
                 Spacer(modifier = Modifier.width(VerySmallPadding))
+
                 Text(text = rating.toString())
             }
         }
@@ -67,24 +70,27 @@ fun MovieDetail(
 
         Spacer(modifier = Modifier.height(ItemSpacing))
 
-        MovieCard {
+        MovieCard(
+            modifier = Modifier.padding(VerySmallPadding)
+        ) {
             Row(
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 genre.forEachIndexed { index, genreText ->
-                    if (index != 0) {
-                        VerticalDivider(modifier = Modifier.height(16.dp))
-                    }
                     Text(
                         modifier = Modifier
                             .padding(6.dp)
                             .weight(1F),
                         maxLines = 1,
+                        textAlign = TextAlign.Center,
                         text = genreText,
                     )
-                    if (index != genreText.lastIndex) {
-                        VerticalDivider(modifier = Modifier.height(16.dp))
+                    if (index < genre.lastIndex) {
+                        VerticalDivider(
+                            modifier = Modifier.height(16.dp),
+                            thickness = 2.dp,
+                        )
                     }
                 }
             }
@@ -94,7 +100,7 @@ fun MovieDetail(
 
 @Preview
 @Composable
-fun MovieDetailPreview() {
+private fun MovieDetailPreview() {
     MovieDetail(
         rating = 7.5,
         title = "Doctor Strange",

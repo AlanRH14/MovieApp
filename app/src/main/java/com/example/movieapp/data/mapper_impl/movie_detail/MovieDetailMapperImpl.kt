@@ -5,7 +5,7 @@ import com.example.movieapp.data.remote.models.movie_detail.CastDto
 import com.example.movieapp.data.remote.models.movie_detail.MovieDetailDto
 import com.example.movieapp.domain.models.movie_detail.Cast
 import com.example.movieapp.domain.models.movie_detail.MovieDetail
-import com.example.movieapp.domain.models.movie_detail.Reviews
+import com.example.movieapp.domain.models.movie_detail.Review
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -71,7 +71,7 @@ class MovieDetailMapperImpl : ApiMapper<MovieDetail, MovieDetailDto> {
             productionCountries = apiDto.productionCountries?.map { formatEmptyValue(it?.name) }
                 ?: emptyList(),
             reviews = apiDto.reviews?.results?.map {
-                Reviews(
+                Review(
                     author = formatEmptyValue(it?.author),
                     content = formatEmptyValue(it?.content),
                     createdAt = formatTimeStamp(time = it?.createdAt ?: "0"),

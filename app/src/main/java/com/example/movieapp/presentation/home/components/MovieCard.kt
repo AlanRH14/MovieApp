@@ -17,6 +17,7 @@ fun MovieCard(
     modifier: Modifier = Modifier,
     shape: CornerBasedShape = MaterialTheme.shapes.large,
     bgColor: Color = Color.Black.copy(alpha = 0.8F),
+    contentColor: Color = Color.White,
     content: @Composable () -> Unit
 ) {
     Card(
@@ -24,7 +25,7 @@ fun MovieCard(
         shape = shape,
         colors = CardDefaults.cardColors(
             containerColor = bgColor,
-            contentColor = Color.White,
+            contentColor = contentColor,
         )
     ) {
         content()
@@ -33,7 +34,7 @@ fun MovieCard(
 
 @Preview
 @Composable
-fun MovieCarPreview() {
+private fun MovieCarPreview() {
     MovieCard {
         Text(
             modifier = Modifier

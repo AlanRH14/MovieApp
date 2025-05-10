@@ -1,0 +1,52 @@
+package com.example.movieapp.presentation.detail.widgets
+
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import com.example.movieapp.R
+import com.example.movieapp.domain.models.movie_detail.MovieDetail
+import com.example.movieapp.presentation.components.GenericImage
+import com.example.movieapp.presentation.detail.components.DetailComponent
+
+@Composable
+fun DetailTopContent(
+    modifier: Modifier = Modifier,
+    movieDetail: MovieDetail,
+    onNavigateUp: () -> Unit
+) {
+
+    Box(modifier = modifier.fillMaxWidth()) {
+        IconButton(
+            onClick = onNavigateUp
+        ) {
+            Icon(
+                modifier = Modifier.align(Alignment.TopStart),
+                imageVector = Icons.AutoMirrored.Default.ArrowBack,
+                contentDescription = stringResource(R.string.navigate_up_icon),
+            )
+        }
+
+        GenericImage(
+            modifier = Modifier
+                .matchParentSize(),
+            pathImage = movieDetail.posterPath,
+            contentDescription = stringResource(R.string.detail_top_image),
+            placeholder = painterResource(id = R.drawable.bg_image_movie)
+        )
+
+        DetailComponent(
+            modifier = Modifier
+                .align(Alignment.BottomStart),
+            rating = movieDetail.voteAverage,
+            releaseDate = movieDetail.releaseDate,
+        )
+    }
+}
