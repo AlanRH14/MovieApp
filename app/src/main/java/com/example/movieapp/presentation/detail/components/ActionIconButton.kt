@@ -20,13 +20,13 @@ fun ActionIconButton(
     MovieCard(
         modifier = modifier
             .padding(all = VerySmallPadding),
-        shape = CircleShape
+        shape = CircleShape,
+        bgColor = bgColor
     ) {
         Icon(
             modifier = Modifier.padding(VerySmallPadding),
             imageVector = icon,
             contentDescription = contentDescription,
-            tint = bgColor
         )
     }
 }

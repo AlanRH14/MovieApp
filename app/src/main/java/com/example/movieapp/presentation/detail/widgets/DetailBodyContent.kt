@@ -12,7 +12,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowForward
+import androidx.compose.material.icons.automirrored.filled.ArrowForwardIos
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -98,7 +98,7 @@ fun DetailBodyContent(
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(all = ItemSpacing),
+                            .padding(horizontal = ItemSpacing),
                         horizontalArrangement = Arrangement.SpaceBetween,
                         verticalAlignment = Alignment.CenterVertically
                     ) {
@@ -112,7 +112,7 @@ fun DetailBodyContent(
                             onClick = {}
                         ) {
                             Icon(
-                                imageVector = Icons.AutoMirrored.Filled.ArrowForward,
+                                imageVector = Icons.AutoMirrored.Filled.ArrowForwardIos,
                                 contentDescription = stringResource(R.string.cast_crew_button),
                             )
                         }
@@ -123,6 +123,7 @@ fun DetailBodyContent(
                             ActorItem(
                                 modifier = Modifier
                                     .weight(1F)
+                                    .padding(horizontal = ItemSpacing)
                                     .clickable { onActorClick(cast.id) },
                                 cast = cast
                             )

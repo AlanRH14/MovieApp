@@ -6,7 +6,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -33,14 +33,23 @@ fun MovieInfoItem(
 
         Spacer(modifier = Modifier.width(VerySmallPadding))
 
-        LazyRow { 
-            items(infoItem) {
+        LazyRow(
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            itemsIndexed(infoItem) { index, info ->
                 Text(
                     modifier = Modifier.padding(2.dp),
-                    text = it,
+                    text = info,
                     style = MaterialTheme.typography.bodySmall,
                     fontWeight = FontWeight.Bold
                 )
+
+                if (index < infoItem.lastIndex) {
+                    Text(
+                        text = " \u2022 ",
+                        style = MaterialTheme.typography.bodySmall
+                    )
+                }
             }
         }
     }
