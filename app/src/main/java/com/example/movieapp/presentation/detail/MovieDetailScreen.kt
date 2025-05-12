@@ -16,7 +16,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.movieapp.presentation.detail.widgets.DetailBodyContent
 import com.example.movieapp.presentation.detail.widgets.DetailTopContent
-import com.example.movieapp.presentation.widgets.LoadingScreen
+import com.example.movieapp.presentation.detail.widgets.shimmer.DetailLoadingScreen
 
 @Composable
 fun MovieDetailScreen(
@@ -40,6 +40,8 @@ fun MovieDetailScreen(
             )
 
         }
+
+        DetailLoadingScreen(isLoading = state.isLoading)
 
         AnimatedVisibility(
             visible = !state.isLoading && state.error == null
@@ -75,6 +77,4 @@ fun MovieDetailScreen(
             }
         }
     }
-
-    LoadingScreen(isLoading = state.isLoading)
 }

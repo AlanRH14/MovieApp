@@ -25,7 +25,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.movieapp.presentation.home.widgets.TopContent
 import com.example.movieapp.presentation.home.widgets.BodyContent
-import com.example.movieapp.presentation.widgets.LoadingScreen
+import com.example.movieapp.presentation.home.widgets.shimmer.HomeLoadingScreen
 import com.example.movieapp.ui.theme.DefaultPadding
 import com.example.movieapp.ui.theme.ItemSpacing
 import kotlinx.coroutines.delay
@@ -61,7 +61,7 @@ fun HomeScreen(
         }
     }
 
-    LoadingScreen(isLoading = state.isLoading)
+    HomeLoadingScreen(isLoading = state.isLoading)
 
     Box(
         modifier = modifier

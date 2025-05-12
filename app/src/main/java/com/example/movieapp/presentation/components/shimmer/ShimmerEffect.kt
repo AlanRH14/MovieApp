@@ -1,4 +1,4 @@
-package com.example.movieapp.presentation.components
+package com.example.movieapp.presentation.components.shimmer
 
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.infiniteRepeatable

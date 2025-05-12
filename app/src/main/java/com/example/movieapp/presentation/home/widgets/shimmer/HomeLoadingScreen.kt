@@ -1,4 +1,4 @@
-package com.example.movieapp.presentation.widgets
+package com.example.movieapp.presentation.home.widgets.shimmer
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.expandVertically
@@ -23,12 +23,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.movieapp.presentation.components.shimmerEffect
+import com.example.movieapp.presentation.components.shimmer.shimmerEffect
+import com.example.movieapp.presentation.components.shimmer.HeaderMovieListShimmer
 import com.example.movieapp.ui.theme.DefaultPadding
 import com.example.movieapp.ui.theme.ItemSpacing
 
 @Composable
-fun LoadingScreen(
+fun HomeLoadingScreen(
     modifier: Modifier = Modifier,
     isLoading: Boolean
 ) {
@@ -80,32 +81,7 @@ fun LoadingScreen(
                     )
             ) {
 
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(all = ItemSpacing),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Box(
-                        modifier = Modifier
-                            .height(20.dp)
-                            .fillMaxWidth()
-                            .shimmerEffect()
-                            .weight(1F)
-                    )
-                    Spacer(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .weight(1F)
-                    )
-
-                    Box(
-                        modifier = Modifier
-                            .size(24.dp)
-                            .shimmerEffect()
-                    )
-                }
+                HeaderMovieListShimmer()
 
                 Row {
                     repeat(4) {
@@ -123,33 +99,7 @@ fun LoadingScreen(
 
                 Spacer(modifier = Modifier.height(ItemSpacing))
 
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(all = ItemSpacing),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Box(
-                        modifier = Modifier
-                            .height(20.dp)
-                            .fillMaxWidth()
-                            .shimmerEffect()
-                            .weight(1F)
-                    )
-
-                    Spacer(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .weight(1F)
-                    )
-
-                    Box(
-                        modifier = Modifier
-                            .size(24.dp)
-                            .shimmerEffect()
-                    )
-                }
+                HeaderMovieListShimmer()
 
                 Row {
                     repeat(4) {
@@ -172,7 +122,7 @@ fun LoadingScreen(
 @Preview
 @Composable
 private fun LoadingScreenPreview() {
-    LoadingScreen(
+    HomeLoadingScreen(
         isLoading = true
     )
 }
