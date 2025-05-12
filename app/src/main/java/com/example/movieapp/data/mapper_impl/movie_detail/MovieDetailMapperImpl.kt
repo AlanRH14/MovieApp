@@ -12,7 +12,7 @@ import java.util.Locale
 class MovieDetailMapperImpl : ApiMapper<MovieDetail, MovieDetailDto> {
 
     private fun formatTimeStamp(pattern: String = "dd.MM.yy", time: String): String {
-        val inputDateFormatter = SimpleDateFormat("yyyy-MMM-dd'T'HH:mm:ss.SSS'Z'", Locale.US)
+        val inputDateFormatter = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US)
         val outputDateFormatter = SimpleDateFormat(
             pattern,
             Locale.getDefault()
@@ -39,7 +39,7 @@ class MovieDetailMapperImpl : ApiMapper<MovieDetail, MovieDetailDto> {
 
     private fun formatCast(castDto: List<CastDto?>?): List<Cast> {
         return castDto?.map {
-            val genderRole = if (it?.gender == 2) "Actor" else "Actrees"
+            val genderRole = if (it?.gender == 2) "Actor" else "Actress"
             Cast(
                 id = it?.id ?: 0,
                 name = formatEmptyValue(it?.name),
