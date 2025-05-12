@@ -24,17 +24,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import com.example.movieapp.R
 import com.example.movieapp.domain.models.movie.Movie
 import com.example.movieapp.domain.models.movie_detail.MovieDetail
 import com.example.movieapp.presentation.detail.components.ActionIconButton
 import com.example.movieapp.presentation.detail.components.ActorItem
+import com.example.movieapp.presentation.detail.components.GenreInfo
 import com.example.movieapp.presentation.detail.components.MovieInfoItem
 import com.example.movieapp.presentation.home.ActionIcon
 import com.example.movieapp.ui.theme.DefaultPadding
 import com.example.movieapp.ui.theme.ItemSpacing
-import com.example.movieapp.ui.theme.SmallPadding
 
 @Composable
 fun DetailBodyContent(
@@ -57,35 +56,11 @@ fun DetailBodyContent(
                         .fillMaxWidth()
                         .padding(DefaultPadding)
                 ) {
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.Center,
-                        verticalAlignment = Alignment.CenterVertically,
-                    ) {
 
-                        movieDetail.genreIds.forEachIndexed { index, genreText ->
-                            Text(
-                                modifier = Modifier
-                                    .padding(SmallPadding),
-                                text = genreText,
-                                maxLines = 1,
-                                style = MaterialTheme.typography.bodySmall
-                            )
-
-                            if (index < movieDetail.genreIds.lastIndex) {
-                                Text(
-                                    text = " \u2022 ",
-                                    style = MaterialTheme.typography.bodySmall
-                                )
-                            }
-                        }
-
-                        Text(
-                            text = movieDetail.runtime,
-                            style = MaterialTheme.typography.bodySmall,
-                            textAlign = TextAlign.Center
-                        )
-                    }
+                    GenreInfo(
+                        genreIds = movieDetail.genreIds,
+                        runtime = movieDetail.runtime
+                    )
 
                     Spacer(modifier = Modifier.height(ItemSpacing))
 
