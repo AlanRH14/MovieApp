@@ -20,6 +20,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.movieapp.R
 import com.example.movieapp.domain.models.movie.Movie
@@ -35,7 +36,10 @@ fun MovieCoverImage(
 ) {
     Box(
         modifier = modifier
-            .size(width = 150.dp, height = 250.dp)
+            .size(
+                width = 150.dp,
+                height = 250.dp
+            )
             .padding(ItemSpacing)
             .clickable { onMovieClick(movie.id) },
     ) {
@@ -78,6 +82,7 @@ fun MovieCoverImage(
             ) {
                 Text(
                     text = movie.title,
+                    textAlign = TextAlign.Center,
                     maxLines = 1
                 )
             }

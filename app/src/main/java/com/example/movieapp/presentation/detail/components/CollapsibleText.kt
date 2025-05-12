@@ -19,7 +19,6 @@ import androidx.compose.ui.text.withStyle
 
 @Composable
 fun CollapsibleText(
-    modifier: Modifier = Modifier,
     text: String,
     collapsedMaxLines: Int = 3,
     style: TextStyle = MaterialTheme.typography.bodyMedium
