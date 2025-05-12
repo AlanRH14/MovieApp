@@ -61,6 +61,8 @@ fun HomeScreen(
         }
     }
 
+    LoadingScreen(isLoading = state.isLoading)
+
     Box(
         modifier = modifier
     ) {
@@ -126,6 +128,4 @@ fun HomeScreen(
             }
         }
     }
-
-    LoadingScreen(isLoading = state.isLoading)
 }

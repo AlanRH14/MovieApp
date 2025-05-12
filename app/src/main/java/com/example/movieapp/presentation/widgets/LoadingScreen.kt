@@ -1,31 +1,31 @@
 package com.example.movieapp.presentation.widgets
 
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.core.animateFloat
-import androidx.compose.animation.core.infiniteRepeatable
-import androidx.compose.animation.core.rememberInfiniteTransition
-import androidx.compose.animation.core.tween
 import androidx.compose.animation.expandVertically
 import androidx.compose.animation.fadeIn
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.composed
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.IntSize
+import androidx.compose.ui.unit.dp
+import com.example.movieapp.presentation.components.shimmerEffect
+import com.example.movieapp.ui.theme.DefaultPadding
+import com.example.movieapp.ui.theme.ItemSpacing
 
 @Composable
 fun LoadingScreen(
@@ -36,44 +36,137 @@ fun LoadingScreen(
         visible = isLoading,
         enter = fadeIn() + expandVertically()
     ) {
-        Box(
+        BoxWithConstraints(
             modifier = modifier
                 .fillMaxSize()
         ) {
-            Surface(
+            val boxHeight = maxHeight
+            val topItemHeight = boxHeight * .45F
+            val bodyItemHeight = boxHeight * .55F
+
+            Box(
+                modifier
+                    .fillMaxWidth()
+                    .heightIn(min = topItemHeight)
+            ) {
+                Row(
+                    modifier = Modifier
+                        .padding(all = DefaultPadding)
+                        .matchParentSize(),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    repeat(3) {
+                        Box(
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .padding(ItemSpacing)
+                                .shimmerEffect()
+                        )
+                    }
+                }
+            }
+
+            Column(
                 modifier = Modifier
-                    .fillMaxSize()
-                    .align(Alignment.Center),
-                color = MaterialTheme.colorScheme.primary.copy(alpha = 0.3F)
+                    .fillMaxWidth()
+                    .align(Alignment.BottomCenter)
+                    .heightIn(max = bodyItemHeight)
+                    .background(
+                        color = MaterialTheme.colorScheme.surfaceContainerHighest,
+                        shape = RoundedCornerShape(
+                            topStart = 12.0.dp,
+                            topEnd = 12.0.dp
+                        )
+                    )
             ) {
 
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(all = ItemSpacing),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .height(20.dp)
+                            .fillMaxWidth()
+                            .shimmerEffect()
+                            .weight(1F)
+                    )
+                    Spacer(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .weight(1F)
+                    )
+
+                    Box(
+                        modifier = Modifier
+                            .size(24.dp)
+                            .shimmerEffect()
+                    )
+                }
+
+                Row {
+                    repeat(4) {
+                        Box(
+                            modifier = Modifier
+                                .size(
+                                    width = 150.dp,
+                                    height = 250.dp
+                                )
+                                .padding(ItemSpacing)
+                                .shimmerEffect()
+                        )
+                    }
+                }
+
+                Spacer(modifier = Modifier.height(ItemSpacing))
+
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(all = ItemSpacing),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .height(20.dp)
+                            .fillMaxWidth()
+                            .shimmerEffect()
+                            .weight(1F)
+                    )
+
+                    Spacer(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .weight(1F)
+                    )
+
+                    Box(
+                        modifier = Modifier
+                            .size(24.dp)
+                            .shimmerEffect()
+                    )
+                }
+
+                Row {
+                    repeat(4) {
+                        Box(
+                            modifier = Modifier
+                                .size(
+                                    width = 150.dp,
+                                    height = 250.dp
+                                )
+                                .padding(ItemSpacing)
+                                .shimmerEffect()
+                        )
+                    }
+                }
             }
         }
     }
-}
-
-private fun Modifier.shimmerEffect(): Modifier = composed {
-    var size by remember {
-        mutableStateOf(IntSize.Zero)
-    }
-    val transition = rememberInfiniteTransition()
-    val startOffsetX by transition.animateFloat(
-        initialValue = -2 * size.width.toFloat(),
-        targetValue = 2 * size.width.toFloat(),
-        animationSpec = infiniteRepeatable(animation = tween(1000))
-    )
-
-    background(
-        brush = Brush.linearGradient(
-            colors = listOf(
-                Color(0xFFB8B5B5),
-                Color(0xFF8F8B8B),
-                Color(0xFFB8B5B5)
-            ),
-            start = Offset(startOffsetX, 0F),
-            end = Offset(startOffsetX + size.width.toFloat(), size.height.toFloat())
-        )
-    ).onGloballyPositioned { size = it.size }
 }
 
 @Preview
