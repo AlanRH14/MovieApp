@@ -4,14 +4,17 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.expandVertically
 import androidx.compose.animation.fadeIn
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -19,12 +22,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.movieapp.presentation.components.shimmer.shimmerEffect
-import com.example.movieapp.presentation.components.shimmer.HeaderMovieListShimmer
+import com.example.movieapp.ui.theme.DefaultPadding
+import com.example.movieapp.ui.theme.ItemSpacing
 
 @Composable
 fun DetailLoadingScreen(
     modifier: Modifier = Modifier,
-    isLoading: Boolean = true
+    isLoading: Boolean
 ) {
     AnimatedVisibility(
         visible = isLoading,
@@ -35,13 +39,14 @@ fun DetailLoadingScreen(
                 .fillMaxSize()
         ) {
             val boxHeight = maxHeight
-            val topItemHeight = boxHeight * 0.45F
-            val bodyItemHeight = boxHeight * 0.55F
+            val topItemHeight = boxHeight * .45F
+            val bodyItemHeight = boxHeight * .55F
 
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
                     .heightIn(min = topItemHeight)
+                    .matchParentSize()
                     .shimmerEffect()
             )
 
@@ -58,25 +63,71 @@ fun DetailLoadingScreen(
                         )
                     )
             ) {
-
-                Row {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(DefaultPadding),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
                     Box(
                         modifier = Modifier
+                            .height(12.dp)
                             .fillMaxWidth()
-                            .height(14.dp)
-                            .weight(1F)
                             .shimmerEffect()
+                            .weight(0.4F)
+                    )
+
+                    Spacer(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .weight(0.5F)
                     )
 
                     Box(
                         modifier = Modifier
+                            .height(12.dp)
                             .fillMaxWidth()
-                            .height(14.dp)
+                            .weight(0.1F)
                             .shimmerEffect()
                     )
                 }
 
-                HeaderMovieListShimmer()
+                Box(
+                    modifier = Modifier
+                        .padding(all = ItemSpacing)
+                        .fillMaxWidth()
+                        .height(20.dp)
+                        .shimmerEffect()
+                )
+
+                Spacer(modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(2F))
+
+                Box(
+                    modifier = Modifier
+                        .padding(horizontal = ItemSpacing)
+                        .fillMaxWidth()
+                        .height(12.dp)
+                )
+
+                Spacer(modifier = Modifier.fillMaxWidth())
+
+                Box(
+                    modifier = Modifier
+                        .padding(horizontal = ItemSpacing)
+                        .fillMaxWidth()
+                        .height(12.dp)
+                )
+
+                Box(
+                    modifier = Modifier
+                        .padding(horizontal = ItemSpacing)
+                        .fillMaxWidth()
+                        .height(12.dp)
+                )
+
             }
         }
     }

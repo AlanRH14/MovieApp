@@ -4,7 +4,6 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.expandVertically
 import androidx.compose.animation.fadeIn
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
@@ -46,26 +45,14 @@ fun HomeLoadingScreen(
             val bodyItemHeight = boxHeight * .55F
 
             Box(
-                modifier
+                modifier = Modifier
+                    .padding(horizontal = DefaultPadding)
                     .fillMaxWidth()
                     .heightIn(min = topItemHeight)
-            ) {
-                Row(
-                    modifier = Modifier
-                        .padding(all = DefaultPadding)
-                        .matchParentSize(),
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                    repeat(3) {
-                        Box(
-                            modifier = Modifier
-                                .fillMaxSize()
-                                .padding(ItemSpacing)
-                                .shimmerEffect()
-                        )
-                    }
-                }
-            }
+                    .matchParentSize()
+                    .padding(horizontal = ItemSpacing)
+                    .shimmerEffect()
+            )
 
             Column(
                 modifier = Modifier
@@ -75,8 +62,8 @@ fun HomeLoadingScreen(
                     .background(
                         color = MaterialTheme.colorScheme.surfaceContainerHighest,
                         shape = RoundedCornerShape(
-                            topStart = 12.0.dp,
-                            topEnd = 12.0.dp
+                            topStart = 12.dp,
+                            topEnd = 12.dp
                         )
                     )
             ) {

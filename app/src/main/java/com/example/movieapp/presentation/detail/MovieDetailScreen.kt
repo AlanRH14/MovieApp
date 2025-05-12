@@ -28,9 +28,10 @@ fun MovieDetailScreen(
 ) {
     val state by movieDetailViewModel.detailState.collectAsStateWithLifecycle()
 
+    DetailLoadingScreen(isLoading = state.isLoading)
+
     Box(modifier = modifier.fillMaxWidth()) {
         AnimatedVisibility(
-            modifier = Modifier.align(Alignment.TopCenter),
             visible = state.error != null,
         ) {
             Text(
@@ -38,10 +39,7 @@ fun MovieDetailScreen(
                 color = MaterialTheme.colorScheme.error,
                 maxLines = 2
             )
-
         }
-
-        DetailLoadingScreen(isLoading = state.isLoading)
 
         AnimatedVisibility(
             visible = !state.isLoading && state.error == null
