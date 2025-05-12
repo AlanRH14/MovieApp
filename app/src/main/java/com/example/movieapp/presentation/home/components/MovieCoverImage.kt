@@ -21,7 +21,9 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.movieapp.R
 import com.example.movieapp.domain.models.movie.Movie
 import com.example.movieapp.presentation.components.GenericImage
@@ -34,6 +36,7 @@ fun MovieCoverImage(
     movie: Movie,
     onMovieClick: (id: Int) -> Unit
 ) {
+
     Box(
         modifier = modifier
             .size(
@@ -71,19 +74,22 @@ fun MovieCoverImage(
             color = Color.Black.copy(alpha = 0.8F),
             contentColor = Color.White,
             shape = RoundedCornerShape(
-                bottomEnd = 30.dp,
-                bottomStart = 30.dp
+                bottomEnd = 12.0.dp,
+                bottomStart = 12.0.dp
             )
         ) {
             Box(
                 modifier = Modifier
-                    .fillMaxWidth(),
+                    .fillMaxWidth()
+                    .padding(VerySmallPadding),
                 contentAlignment = Alignment.Center,
             ) {
                 Text(
                     text = movie.title,
                     textAlign = TextAlign.Center,
-                    maxLines = 1
+                    maxLines = 1,
+                    fontSize = 14.sp,
+                    overflow = TextOverflow.Ellipsis
                 )
             }
         }
