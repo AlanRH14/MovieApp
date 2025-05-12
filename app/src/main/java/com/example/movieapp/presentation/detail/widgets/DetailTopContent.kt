@@ -2,6 +2,7 @@ package com.example.movieapp.presentation.detail.widgets
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.Icon
@@ -15,6 +16,7 @@ import com.example.movieapp.R
 import com.example.movieapp.domain.models.movie_detail.MovieDetail
 import com.example.movieapp.presentation.components.GenericImage
 import com.example.movieapp.presentation.detail.components.DetailComponent
+import com.example.movieapp.ui.theme.ItemSpacing
 
 @Composable
 fun DetailTopContent(
@@ -44,7 +46,8 @@ fun DetailTopContent(
 
         DetailComponent(
             modifier = Modifier
-                .align(Alignment.BottomStart),
+                .align(Alignment.BottomStart)
+                .padding(ItemSpacing),
             rating = movieDetail.voteAverage,
             releaseDate = movieDetail.releaseDate,
         )

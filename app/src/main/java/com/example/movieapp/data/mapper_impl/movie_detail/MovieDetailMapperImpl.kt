@@ -6,6 +6,7 @@ import com.example.movieapp.data.remote.models.movie_detail.MovieDetailDto
 import com.example.movieapp.domain.models.movie_detail.Cast
 import com.example.movieapp.domain.models.movie_detail.MovieDetail
 import com.example.movieapp.domain.models.movie_detail.Review
+import com.example.movieapp.utils.FormatValue.toDecimalValue
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -58,11 +59,11 @@ class MovieDetailMapperImpl : ApiMapper<MovieDetail, MovieDetailDto> {
             originalLanguage = formatEmptyValue(apiDto.originalLanguage, "language"),
             originalTitle = formatEmptyValue(apiDto.originalTitle, "title"),
             overview = formatEmptyValue(apiDto.overview, "overview"),
-            popularity = apiDto.popularity ?: 0.0,
+            popularity = apiDto.popularity?.toDecimalValue() ?: 0.0,
             posterPath = formatEmptyValue(apiDto.posterPath),
             releaseDate = formatEmptyValue(apiDto.releaseDate, "date"),
             title = formatEmptyValue(apiDto.title, "title"),
-            voteAverage = apiDto.voteAverage ?: 0.0,
+            voteAverage = apiDto.voteAverage?.toDecimalValue() ?: 0.0,
             voteCount = apiDto.voteCount ?: 0,
             video = apiDto.video ?: false,
             cast = formatCast(apiDto.credits?.cast),

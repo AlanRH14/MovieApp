@@ -118,6 +118,8 @@ fun DetailBodyContent(
                         }
                     }
 
+                    Spacer(modifier = Modifier.height(ItemSpacing))
+
                     LazyRow {
                         items(movieDetail.cast) { cast ->
                             ActorItem(
