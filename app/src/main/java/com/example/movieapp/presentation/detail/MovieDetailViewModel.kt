@@ -6,7 +6,6 @@ import androidx.lifecycle.viewModelScope
 import com.example.movieapp.domain.repository.movie_detail.MovieDetailRepository
 import com.example.movieapp.utils.collectAndHandle
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -34,7 +33,6 @@ class MovieDetailViewModel @Inject constructor(
                 it.copy(isLoading = false, error = "Movie not found")
             }
         } else {
-            delay(3000)
             repository.fetchMovieDetail(movieId = id).collectAndHandle(
                 onLoading = {
                     _detailState.update {
@@ -58,7 +56,6 @@ class MovieDetailViewModel @Inject constructor(
     }
 
     fun fetchMovie() = viewModelScope.launch {
-        delay(3000)
         repository.fetchMovie().collectAndHandle(
             onLoading = {
                 _detailState.update {
