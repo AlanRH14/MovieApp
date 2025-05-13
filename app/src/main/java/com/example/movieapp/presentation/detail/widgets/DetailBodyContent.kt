@@ -82,7 +82,7 @@ fun DetailBodyContent(
                                 bgColor = if (index == ActionIcon.entries.lastIndex) {
                                     MaterialTheme.colorScheme.primaryContainer
                                 } else {
-                                    Color.Black.copy(0.5F)
+                                    Color.Black.copy(0.8F)
                                 }
                             )
                         }

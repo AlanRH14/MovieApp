@@ -5,7 +5,6 @@ import androidx.lifecycle.viewModelScope
 import com.example.movieapp.domain.repository.movie.MovieRepository
 import com.example.movieapp.utils.collectAndHandle
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -26,7 +25,6 @@ class HomeViewModel @Inject constructor(
     }
 
     private fun fetchDiscoverMovie() = viewModelScope.launch {
-        delay(3000)
         repository.fetchDiscoverMovie().collectAndHandle(
             onLoading = {
                 _homeState.update {
@@ -47,7 +45,6 @@ class HomeViewModel @Inject constructor(
     }
 
     private fun fetchTrendingMovie() = viewModelScope.launch {
-        delay(3000)
         repository.fetchTrendingMovie().collectAndHandle(
             onLoading = {
                 _homeState.update {
