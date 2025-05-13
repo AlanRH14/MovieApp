@@ -3,6 +3,7 @@ package com.example.movieapp.data.mapper_impl.movie
 import com.example.movieapp.common.movie.ApiMapper
 import com.example.movieapp.data.remote.models.movie.MovieDto
 import com.example.movieapp.domain.models.movie.Movie
+import com.example.movieapp.utils.FormatValue.toDecimalValue
 import com.example.movieapp.utils.GenreConstants
 
 class MovieApiMapperImpl : ApiMapper<List<Movie>, MovieDto> {
@@ -16,11 +17,11 @@ class MovieApiMapperImpl : ApiMapper<List<Movie>, MovieDto> {
                 originalLanguage = formatEmptyValue(result?.originalLanguage, default = "language"),
                 originalTitle = formatEmptyValue(result?.originalTitle, default = "title"),
                 overview = formatEmptyValue(result?.overview, default = "overview"),
-                popularity = result?.popularity ?: 0.0,
+                popularity = result?.popularity?.toDecimalValue() ?: 0.0,
                 posterPath = formatEmptyValue(result?.posterPath),
                 releaseDate = formatEmptyValue(result?.releaseDate, default = "date"),
                 title = formatEmptyValue(result?.title, default = "title"),
-                voteAverage = result?.voteAverage ?: 0.0,
+                voteAverage = result?.voteAverage?.toDecimalValue() ?: 0.0,
                 voteCount = result?.voteCount ?: 0,
                 video = result?.video ?: false
             )

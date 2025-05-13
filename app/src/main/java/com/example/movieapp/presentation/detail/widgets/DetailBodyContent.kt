@@ -1,7 +1,6 @@
 package com.example.movieapp.presentation.detail.widgets
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -11,30 +10,25 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowForward
 import androidx.compose.material3.Card
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import com.example.movieapp.R
 import com.example.movieapp.domain.models.movie.Movie
 import com.example.movieapp.domain.models.movie_detail.MovieDetail
+import com.example.movieapp.presentation.components.HeaderMovieList
 import com.example.movieapp.presentation.detail.components.ActionIconButton
 import com.example.movieapp.presentation.detail.components.ActorItem
+import com.example.movieapp.presentation.detail.components.GenreInfo
 import com.example.movieapp.presentation.detail.components.MovieInfoItem
 import com.example.movieapp.presentation.home.ActionIcon
 import com.example.movieapp.ui.theme.DefaultPadding
 import com.example.movieapp.ui.theme.ItemSpacing
-import com.example.movieapp.ui.theme.SmallPadding
 
 @Composable
 fun DetailBodyContent(
@@ -57,35 +51,11 @@ fun DetailBodyContent(
                         .fillMaxWidth()
                         .padding(DefaultPadding)
                 ) {
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.Center,
-                        verticalAlignment = Alignment.CenterVertically,
-                    ) {
 
-                        movieDetail.genreIds.forEachIndexed { index, genreText ->
-                            Text(
-                                modifier = Modifier
-                                    .padding(SmallPadding),
-                                text = genreText,
-                                maxLines = 1,
-                                style = MaterialTheme.typography.bodySmall
-                            )
-
-                            if (index < movieDetail.genreIds.lastIndex) {
-                                Text(
-                                    text = " \u2022 ",
-                                    style = MaterialTheme.typography.bodySmall
-                                )
-                            }
-                        }
-
-                        Text(
-                            text = movieDetail.runtime,
-                            style = MaterialTheme.typography.bodySmall,
-                            textAlign = TextAlign.Center
-                        )
-                    }
+                    GenreInfo(
+                        genreIds = movieDetail.genreIds,
+                        runtime = movieDetail.runtime
+                    )
 
                     Spacer(modifier = Modifier.height(ItemSpacing))
 
@@ -118,36 +88,17 @@ fun DetailBodyContent(
                         }
                     }
 
-                    Spacer(modifier = Modifier.height(ItemSpacing))
-
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(all = ItemSpacing),
-                        horizontalArrangement = Arrangement.SpaceBetween,
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Text(
-                            text = stringResource(R.string.cast_crew),
-                            style = MaterialTheme.typography.titleLarge,
-                            fontWeight = FontWeight.Bold
-                        )
-
-                        IconButton(
-                            onClick = {}
-                        ) {
-                            Icon(
-                                imageVector = Icons.AutoMirrored.Filled.ArrowForward,
-                                contentDescription = stringResource(R.string.cast_crew_button),
-                            )
-                        }
-                    }
+                    HeaderMovieList(
+                        title = stringResource(R.string.cast_crew),
+                        contentDescription = stringResource(R.string.cast_crew_button)
+                    )
 
                     LazyRow {
                         items(movieDetail.cast) { cast ->
                             ActorItem(
                                 modifier = Modifier
                                     .weight(1F)
+                                    .padding(horizontal = ItemSpacing)
                                     .clickable { onActorClick(cast.id) },
                                 cast = cast
                             )
