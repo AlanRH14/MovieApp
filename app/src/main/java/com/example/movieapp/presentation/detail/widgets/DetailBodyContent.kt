@@ -88,14 +88,10 @@ fun DetailBodyContent(
                         }
                     }
 
-                    Spacer(modifier = Modifier.height(ItemSpacing))
-
                     HeaderMovieList(
                         title = stringResource(R.string.cast_crew),
                         contentDescription = stringResource(R.string.cast_crew_button)
                     )
-
-                    Spacer(modifier = Modifier.height(ItemSpacing))
 
                     LazyRow {
                         items(movieDetail.cast) { cast ->

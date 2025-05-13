@@ -24,7 +24,7 @@ fun HeaderMovieList(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(all = ItemSpacing),
+            .padding(vertical = ItemSpacing),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
