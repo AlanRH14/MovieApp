@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -78,11 +79,11 @@ fun DetailLoadingScreen(
                     Box(
                         modifier = Modifier
                             .height(12.dp)
-                            .weight(0.4F)
+                            .weight(0.6F)
                             .shimmerEffect()
                     )
 
-                    Spacer(modifier = Modifier.weight(0.5F))
+                    Spacer(modifier = Modifier.weight(0.3F))
 
                     Box(
                         modifier = Modifier
@@ -94,12 +95,16 @@ fun DetailLoadingScreen(
 
                 Spacer(modifier = Modifier.height(ItemSpacing))
 
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(20.dp)
-                        .shimmerEffect()
-                )
+                Row {
+                    Box(
+                        modifier = Modifier
+                            .weight(0.4F)
+                            .height(22.dp)
+                            .shimmerEffect()
+                    )
+
+                    Spacer(modifier = Modifier.weight(0.6F))
+                }
 
                 Spacer(modifier = Modifier.height(ItemSpacing))
 
@@ -108,7 +113,7 @@ fun DetailLoadingScreen(
                         modifier = Modifier
                             .padding(vertical = 1.dp)
                             .fillMaxWidth()
-                            .height(12.dp)
+                            .height(14.dp)
                             .shimmerEffect()
                     )
                 }
@@ -119,8 +124,8 @@ fun DetailLoadingScreen(
                     repeat(3) {
                         Box(
                             modifier = Modifier
-                                .padding(horizontal = VerySmallPadding)
-                                .clip(RoundedCornerShape(50))
+                                .padding(all = VerySmallPadding)
+                                .clip(CircleShape)
                                 .size(32.dp)
                                 .shimmerEffect()
                         )
@@ -183,7 +188,7 @@ fun DetailLoadingScreen(
                 Row {
                     Box(
                         modifier = Modifier
-                            .height(20.dp)
+                            .height(22.dp)
                             .weight(0.3F)
                             .shimmerEffect()
                     )

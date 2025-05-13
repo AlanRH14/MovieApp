@@ -41,7 +41,7 @@ fun ActorItemShimmer() {
                 Box(
                     modifier = Modifier
                         .width(35.dp)
-                        .height(10.dp)
+                        .height(12.dp)
                         .shimmerEffect()
                 )
 
