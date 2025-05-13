@@ -85,7 +85,7 @@ fun HomeScreen(
             ) {
                 val boxHeight = maxHeight
                 val topItemHeight = boxHeight * .45F
-                val bodyItemHeight = boxHeight * .55F
+                val bodyItemHeight = boxHeight * .56F
 
                 HorizontalPager(
                     state = pagerState,
