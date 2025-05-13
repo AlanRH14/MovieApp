@@ -16,8 +16,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -28,6 +26,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.movieapp.presentation.components.shimmer.HeaderMovieListShimmer
 import com.example.movieapp.presentation.components.shimmer.shimmerEffect
+import com.example.movieapp.presentation.detail.components.shimmer.ActorItemShimmer
 import com.example.movieapp.ui.theme.ItemSpacing
 import com.example.movieapp.ui.theme.VerySmallPadding
 
@@ -130,49 +129,7 @@ fun DetailLoadingScreen(
 
                 HeaderMovieListShimmer()
 
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                    repeat(8) {
-                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                            Box(
-                                modifier = Modifier
-                                    .padding(horizontal = ItemSpacing)
-                                    .clip(CircleShape)
-                                    .size(48.dp)
-                                    .shimmerEffect()
-                            )
-
-                            Box(
-                                modifier = Modifier
-                                    .width(35.dp)
-                                    .height(10.dp)
-                                    .shimmerEffect()
-                            )
-
-                            Spacer(modifier = Modifier.height(VerySmallPadding))
-
-                            Box(
-                                modifier = Modifier
-                                    .width(55.dp)
-                                    .height(16.dp)
-                                    .shimmerEffect()
-                            )
-
-                            Spacer(modifier = Modifier.height(1.dp))
-
-                            Box(
-                                modifier = Modifier
-                                    .width(55.dp)
-                                    .height(16.dp)
-                                    .shimmerEffect()
-                            )
-                        }
-                    }
-                }
+                ActorItemShimmer()
 
                 Spacer(modifier = Modifier.height(ItemSpacing))
 
