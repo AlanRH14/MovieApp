@@ -7,6 +7,7 @@
     <string name="image_movie_cover">Image Movie Cover</string>
     <string name="bookmark_icon">Bookmark Icon</string>
     <string name="trending_now">Trending now</string>
+    <string name="trending_now_button">Trending now Button</string>
     <string name="detail_top_image">Detail Top Image</string>
     <string name="play_arrow_icon">Play Arrow Icon</string>
     <string name="cast_crew_button"><![CDATA[Cast & Crew Button]]></string>
