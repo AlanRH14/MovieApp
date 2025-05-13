@@ -18,8 +18,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.MovieApp">
+            android:theme="@style/Theme.App.MovieSplash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
