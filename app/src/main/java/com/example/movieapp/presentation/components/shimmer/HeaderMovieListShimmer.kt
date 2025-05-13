@@ -1,6 +1,5 @@
 package com.example.movieapp.presentation.components.shimmer
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -19,8 +18,7 @@ fun HeaderMovieListShimmer() {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(all = ItemSpacing),
-        horizontalArrangement = Arrangement.SpaceBetween,
+            .padding(vertical = ItemSpacing),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Box(

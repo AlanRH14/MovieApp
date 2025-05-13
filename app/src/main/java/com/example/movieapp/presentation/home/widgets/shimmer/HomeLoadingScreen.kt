@@ -65,6 +65,7 @@ fun HomeLoadingScreen(
                             topEnd = 12.dp
                         )
                     )
+                    .padding(ItemSpacing)
             ) {
 
                 HeaderMovieListShimmer()
