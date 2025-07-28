@@ -46,6 +46,7 @@ hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", na
 hilt-androidx-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", name = "hilt-navigation-compose", version.ref = "hiltAndroidxNavigationCompose" }
 hilt-android = { module = "com.google.dagger:hilt-android", name = "hilt-android", version.ref = "hiltAndroid" }
 coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coilCompose" }
+coil-network-okhttp = { module = "io.coil-kt.coil3:coil-network-okhttp", name = "coil-network", version.ref = "coilCompose" }
 androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "coreSplashscreen" }
 
 [plugins]
