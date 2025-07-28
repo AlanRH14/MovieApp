@@ -7,23 +7,11 @@ import com.example.movieapp.data.remote.models.movie.MovieDto
 import com.example.movieapp.data.remote.models.movie_detail.MovieDetailDto
 import com.example.movieapp.domain.models.movie.Movie
 import com.example.movieapp.domain.models.movie_detail.MovieDetail
-import dagger.Module
-import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
-import javax.inject.Singleton
+import org.koin.dsl.module
 
-@Module
-@InstallIn(SingletonComponent::class)
-object ApiMapperModule {
+val apiMapperModule = module {
 
-    @Provides
-    @Singleton
-    fun provideMovieApiMapper(): ApiMapper<List<Movie>, MovieDto> =
-        MovieApiMapperImpl()
+    single<ApiMapper<List<Movie>, MovieDto>> { MovieApiMapperImpl() }
 
-   @Provides
-   @Singleton
-   fun provideDetailApiMapper(): ApiMapper<MovieDetail, MovieDetailDto> =
-       MovieDetailMapperImpl()
+    single<ApiMapper<MovieDetail, MovieDetailDto>> { MovieDetailMapperImpl() }
 }
