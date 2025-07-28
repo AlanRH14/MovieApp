@@ -9,7 +9,7 @@ plugins {
 
 android {
     namespace = "com.example.movieapp"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.example.movieapp"
@@ -66,6 +66,7 @@ dependencies {
 
     implementation(libs.androidx.material.icons.extended)
     implementation(libs.coil.compose)
+    implementation(libs.coil.network.okhttp)
 
     implementation(libs.retrofit)
     implementation(libs.okhttp)
