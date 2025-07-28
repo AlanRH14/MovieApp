@@ -2,6 +2,7 @@ package com.example.movieapp
 
 import android.app.Application
 import com.example.movieapp.di.apiMapperModule
+import com.example.movieapp.di.appModule
 import com.example.movieapp.di.movieDetailModule
 import com.example.movieapp.di.movieModule
 import com.example.movieapp.di.networkModule
@@ -21,7 +22,8 @@ class MovieApplication : Application() {
                 apiMapperModule,
                 movieDetailModule,
                 movieModule,
-                networkModule
+                networkModule,
+                appModule
             )
         }
     }
