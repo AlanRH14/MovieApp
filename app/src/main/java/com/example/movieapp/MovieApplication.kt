@@ -19,10 +19,10 @@ class MovieApplication : Application() {
             androidContext(this@MovieApplication)
             androidLogger(Level.DEBUG)
             modules(
-                apiMapperModule,
-                movieDetailModule,
-                movieModule,
                 networkModule,
+                apiMapperModule,
+                movieModule,
+                movieDetailModule,
                 appModule
             )
         }

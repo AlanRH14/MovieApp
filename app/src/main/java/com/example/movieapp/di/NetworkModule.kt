@@ -32,7 +32,7 @@ val networkModule = module {
             .build()
     }
 
-    single<Retrofit> {
+    single {
         Retrofit.Builder()
             .baseUrl(BASE_URL)
             .client(get<OkHttpClient>())
@@ -41,7 +41,7 @@ val networkModule = module {
     }
 
 
-    single<MovieApiService> { get<Retrofit>().create(MovieApiService::class.java) }
+    single { get<Retrofit>().create(MovieApiService::class.java) }
 
-    single<MovieDetailApiService> { get<Retrofit>().create(MovieDetailApiService::class.java) }
+    single { get<Retrofit>().create(MovieDetailApiService::class.java) }
 }
