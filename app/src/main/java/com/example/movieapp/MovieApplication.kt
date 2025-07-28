@@ -3,6 +3,7 @@ package com.example.movieapp
 import android.app.Application
 import com.example.movieapp.di.apiMapperModule
 import com.example.movieapp.di.movieDetailModule
+import com.example.movieapp.di.movieModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -17,7 +18,8 @@ class MovieApplication : Application() {
             androidLogger(Level.DEBUG)
             modules(
                 apiMapperModule,
-                movieDetailModule
+                movieDetailModule,
+                movieModule
             )
         }
     }
