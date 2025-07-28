@@ -5,15 +5,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.movieapp.domain.repository.movie_detail.MovieDetailRepository
 import com.example.movieapp.utils.collectAndHandle
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-@HiltViewModel
-class MovieDetailViewModel @Inject constructor(
+class MovieDetailViewModel(
     private val repository: MovieDetailRepository,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
