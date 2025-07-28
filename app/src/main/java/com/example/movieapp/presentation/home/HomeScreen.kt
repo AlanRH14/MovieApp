@@ -21,7 +21,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.movieapp.presentation.home.widgets.TopContent
 import com.example.movieapp.presentation.home.widgets.BodyContent
@@ -29,11 +28,12 @@ import com.example.movieapp.presentation.home.widgets.shimmer.HomeLoadingScreen
 import com.example.movieapp.ui.theme.DefaultPadding
 import com.example.movieapp.ui.theme.ItemSpacing
 import kotlinx.coroutines.delay
+import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun HomeScreen(
     modifier: Modifier = Modifier,
-    homeViewModel: HomeViewModel = hiltViewModel(),
+    homeViewModel: HomeViewModel = koinViewModel(),
     onMovieClick: (id: Int) -> Unit
 ) {
     var isAutoScrolling by remember {
