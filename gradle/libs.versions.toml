@@ -16,7 +16,7 @@ kotlinxSerialization = "1.9.0"
 loggingInterceptor = "5.1.0"
 okhttp = "5.1.0"
 
-
+koinAndroid = "2.1.0"
 
 coilCompose = "3.3.0"
 coreSplashscreen = "1.0.1"
@@ -54,6 +54,6 @@ android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "kspVersion" }
-hilt = { id = "com.google.dagger.hilt.android", version.ref = "hiltAndroid" }
+
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 
