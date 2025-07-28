@@ -60,9 +60,8 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    implementation(libs.hilt.android)
-    ksp(libs.hilt.android.compiler)
-    implementation(libs.hilt.androidx.navigation.compose)
+    implementation(libs.koin.android)
+    implementation(libs.koin.androidx.navigation.compose)
 
     implementation(libs.androidx.material.icons.extended)
     implementation(libs.coil.compose)
