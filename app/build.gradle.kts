@@ -62,17 +62,19 @@ dependencies {
     implementation(libs.koin.android)
     implementation(libs.koin.androidx.compose)
 
-    implementation(libs.androidx.material.icons.extended)
-    implementation(libs.coil.compose)
-    implementation(libs.coil.network.okhttp)
-
     implementation(libs.retrofit)
-    implementation(libs.okhttp)
     implementation(libs.logging.interceptor)
-
+    implementation(libs.okhttp)
     implementation(libs.kotlin.serialization)
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.retrofit.converter.kotlinx.serialization)
+
+    implementation(libs.androidx.navigation.compose)
+
+    implementation(libs.androidx.material.icons.extended)
+
+    implementation(libs.coil.compose)
+    implementation(libs.coil.network.okhttp)
 
     implementation(libs.androidx.core.splashscreen)
 }
