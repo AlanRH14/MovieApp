@@ -16,7 +16,7 @@ import androidx.compose.ui.res.stringResource
 import com.example.movieapp.R
 import com.example.movieapp.domain.models.movie_detail.MovieDetail
 import com.example.movieapp.presentation.components.GenericImage
-import com.example.movieapp.presentation.detail.MovieDetailUIEvent
+import com.example.movieapp.presentation.detail.mvi.MovieDetailUIEvent
 import com.example.movieapp.presentation.detail.components.DetailComponent
 import com.example.movieapp.ui.theme.ItemSpacing
 

@@ -22,7 +22,7 @@ import com.example.movieapp.R
 import com.example.movieapp.domain.models.movie.Movie
 import com.example.movieapp.domain.models.movie_detail.MovieDetail
 import com.example.movieapp.presentation.components.HeaderMovieList
-import com.example.movieapp.presentation.detail.MovieDetailUIEvent
+import com.example.movieapp.presentation.detail.mvi.MovieDetailUIEvent
 import com.example.movieapp.presentation.detail.components.ActionIconButton
 import com.example.movieapp.presentation.detail.components.ActorItem
 import com.example.movieapp.presentation.detail.components.GenreInfo

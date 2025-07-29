@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.movieapp.domain.repository.movie_detail.MovieDetailRepository
 import com.example.movieapp.presentation.detail.mvi.DetailState
 import com.example.movieapp.presentation.detail.mvi.MovieDetailEffect
+import com.example.movieapp.presentation.detail.mvi.MovieDetailUIEvent
 import com.example.movieapp.utils.collectAndHandle
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow

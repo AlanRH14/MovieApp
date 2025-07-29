@@ -18,6 +18,7 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import com.example.movieapp.navigation.Route
 import com.example.movieapp.presentation.detail.mvi.MovieDetailEffect
+import com.example.movieapp.presentation.detail.mvi.MovieDetailUIEvent
 import com.example.movieapp.presentation.detail.widgets.DetailBodyContent
 import com.example.movieapp.presentation.detail.widgets.DetailTopContent
 import com.example.movieapp.presentation.detail.widgets.shimmer.DetailLoadingScreen
