@@ -24,14 +24,9 @@ class HomeViewModel(
     fun onEvent(event: HomeUIEvent) {
         when (event) {
             is HomeUIEvent.OnMovieClicked -> Unit
-            is HomeUIEvent.OnFetchDiscoverMovie -> Unit
-            is HomeUIEvent.OnFetchTrendingMovie -> Unit
+            is HomeUIEvent.OnFetchDiscoverMovie -> fetchDiscoverMovie()
+            is HomeUIEvent.OnFetchTrendingMovie -> fetchTrendingMovie()
         }
-    }
-
-    init {
-        fetchDiscoverMovie()
-        fetchTrendingMovie()
     }
 
     private fun fetchDiscoverMovie() = viewModelScope.launch {
