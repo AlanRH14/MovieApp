@@ -7,7 +7,7 @@ import com.example.movieapp.data.remote.models.movie_detail.MovieDetailDto
 import com.example.movieapp.domain.models.movie.Movie
 import com.example.movieapp.domain.models.movie_detail.MovieDetail
 import com.example.movieapp.domain.repository.movie_detail.MovieDetailRepository
-import com.example.movieapp.utils.Response
+import com.example.movieapp.common.Response
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow

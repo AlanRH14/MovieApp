@@ -1,6 +1,7 @@
 package com.example.movieapp.utils
 
 import android.util.Log
+import com.example.movieapp.common.Response
 import kotlinx.coroutines.flow.Flow
 
 suspend fun <T> Flow<Response<T>>.collectAndHandle(
