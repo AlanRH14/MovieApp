@@ -39,7 +39,7 @@ fun MovieDetailScreen(
             when (effect) {
                 is MovieDetailEffect.NavigateToBack -> navController.popBackStack()
                 is MovieDetailEffect.NavigateToMovieDetail -> {
-                    navController.navigate(Route.FilmScreen().getRouteWithArgs(id = effect.movieID)) {
+                    navController.navigate(Route.FilmScreen(movieID = effect.movieID)) {
                         launchSingleTop = true
                         popUpTo(navController.graph.findStartDestination().id) {
                             inclusive = false

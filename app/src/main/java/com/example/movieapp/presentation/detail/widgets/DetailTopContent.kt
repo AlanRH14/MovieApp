@@ -27,9 +27,7 @@ fun DetailTopContent(
 ) {
 
     Box(modifier = modifier.fillMaxWidth()) {
-        IconButton(
-            onClick = onNavigateToBack
-        ) {
+        IconButton(onClick = onNavigateToBack) {
             Icon(
                 modifier = Modifier.align(Alignment.TopStart),
                 imageVector = Icons.AutoMirrored.Default.ArrowBackIos,
