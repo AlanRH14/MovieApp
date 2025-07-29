@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.movieapp.domain.repository.movie_detail.MovieDetailRepository
 import com.example.movieapp.presentation.detail.mvi.DetailState
-import com.example.movieapp.presentation.detail.mvi.MovieDetailEffect
+import com.example.movieapp.presentation.detail.mvi.DetailEffect
 import com.example.movieapp.presentation.detail.mvi.MovieDetailUIEvent
 import com.example.movieapp.utils.collectAndHandle
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -21,7 +21,7 @@ class MovieDetailViewModel(
     private val _detailState = MutableStateFlow(DetailState())
     val detailState = _detailState.asStateFlow()
 
-    private val _effect = MutableSharedFlow<MovieDetailEffect>()
+    private val _effect = MutableSharedFlow<DetailEffect>()
     val effect = _effect.asSharedFlow()
 
     fun onEvent(event: MovieDetailUIEvent) {
@@ -84,13 +84,13 @@ class MovieDetailViewModel(
 
     private fun navigateToBack() {
         viewModelScope.launch {
-            _effect.emit(MovieDetailEffect.NavigateToBack)
+            _effect.emit(DetailEffect.NavigateToBack)
         }
     }
 
     private fun navigateToMovieDetail(movieID: Int) {
         viewModelScope.launch {
-            _effect.emit(MovieDetailEffect.NavigateToMovieDetail(movieID = movieID))
+            _effect.emit(DetailEffect.NavigateToDetail(movieID = movieID))
         }
     }
 }

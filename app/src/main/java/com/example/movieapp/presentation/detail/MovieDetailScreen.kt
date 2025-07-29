@@ -17,7 +17,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import com.example.movieapp.navigation.Route
-import com.example.movieapp.presentation.detail.mvi.MovieDetailEffect
+import com.example.movieapp.presentation.detail.mvi.DetailEffect
 import com.example.movieapp.presentation.detail.mvi.MovieDetailUIEvent
 import com.example.movieapp.presentation.detail.widgets.DetailBodyContent
 import com.example.movieapp.presentation.detail.widgets.DetailTopContent
@@ -39,8 +39,8 @@ fun MovieDetailScreen(
 
         movieDetailViewModel.effect.collectLatest { effect ->
             when (effect) {
-                is MovieDetailEffect.NavigateToBack -> navController.popBackStack()
-                is MovieDetailEffect.NavigateToMovieDetail -> {
+                is DetailEffect.NavigateToBack -> navController.popBackStack()
+                is DetailEffect.NavigateToDetail -> {
                     navController.navigate(Route.FilmScreen(movieID = effect.movieID)) {
                         launchSingleTop = true
                         popUpTo(navController.graph.findStartDestination().id) {
