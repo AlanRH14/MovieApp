@@ -98,7 +98,7 @@ fun DetailBodyContent(
                                 modifier = Modifier
                                     .weight(1F)
                                     .padding(horizontal = ItemSpacing)
-                                    .clickable { onActorClick(cast.id) },
+                                    .clickable { onEvent(MovieDetailUIEvent.OnActorClicked(actorID = cast.id)) },
                                 cast = cast
                             )
                         }
