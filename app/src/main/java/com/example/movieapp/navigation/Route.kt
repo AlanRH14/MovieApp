@@ -1,7 +1,6 @@
 package com.example.movieapp.navigation
 
 import com.example.movieapp.utils.NavigationKeys.FILM_SCREEN
-import com.example.movieapp.utils.NavigationKeys.HOME_SCREEN
 
 sealed interface Route {
     data object HomeScreen: Route
