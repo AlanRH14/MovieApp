@@ -59,9 +59,7 @@ fun HomeScreen(
         homeViewModel.effect.collectLatest { effect ->
             when (effect) {
                 is HomeEffect.NavigateToDetailMovie -> {
-                    navController.navigate(
-                        Route.FilmScreen().getRouteWithArgs(id = effect.movieID)
-                    ) {
+                    navController.navigate(Route.FilmScreen(movieID = effect.movieID)) {
                         launchSingleTop = true
                         popUpTo(navController.graph.findStartDestination().id) {
                             inclusive = false

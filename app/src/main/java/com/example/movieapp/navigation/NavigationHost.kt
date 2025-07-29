@@ -4,10 +4,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
-import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.navArgument
+import androidx.navigation.toRoute
 import com.example.movieapp.presentation.detail.MovieDetailScreen
 import com.example.movieapp.presentation.home.HomeScreen
 
@@ -26,11 +25,12 @@ fun NavigationHost(
             HomeScreen(navController = navController)
         }
 
-        composable(
-            route = Route.FilmScreen().routeWithArgs,
-            arguments = listOf(navArgument(name = "id") { type = NavType.IntType })
-        ) {
-            MovieDetailScreen(navController = navController)
+        composable<Route.FilmScreen> { detailScreen ->
+            val movieID = detailScreen.toRoute<Route.FilmScreen>().movieID
+            MovieDetailScreen(
+                movieID = movieID,
+                navController = navController
+            )
         }
     }
 }
