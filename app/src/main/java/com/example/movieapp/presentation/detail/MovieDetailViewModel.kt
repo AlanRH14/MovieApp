@@ -29,6 +29,8 @@ class MovieDetailViewModel(
         when (event) {
             is MovieDetailUIEvent.OnFetchMovieDetailById -> fetchMovieDetailById()
             is MovieDetailUIEvent.OnFetchMovie -> fetchMovie()
+            is MovieDetailUIEvent.OnMovieClicked -> navigateToMovieDetail(event.movieID)
+            is MovieDetailUIEvent.OnActorClicked -> Unit
             is MovieDetailUIEvent.OnNavigateToBack -> navigateToBack()
         }
     }
@@ -84,6 +86,12 @@ class MovieDetailViewModel(
     private fun navigateToBack() {
         viewModelScope.launch {
             _effect.emit(MovieDetailEffect.NavigateToBack)
+        }
+    }
+
+    private fun navigateToMovieDetail(movieID: Int) {
+        viewModelScope.launch {
+            _effect.emit(MovieDetailEffect.NavigateToMovieDetail(movieID = movieID))
         }
     }
 }

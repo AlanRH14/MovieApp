@@ -14,7 +14,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
+import com.example.movieapp.navigation.Route
 import com.example.movieapp.presentation.detail.widgets.DetailBodyContent
 import com.example.movieapp.presentation.detail.widgets.DetailTopContent
 import com.example.movieapp.presentation.detail.widgets.shimmer.DetailLoadingScreen
@@ -39,6 +41,14 @@ fun MovieDetailScreen(
         movieDetailViewModel.effect.collectLatest { effect ->
             when (effect) {
                 is MovieDetailEffect.NavigateToBack -> navController.popBackStack()
+                is MovieDetailEffect.NavigateToMovieDetail -> {
+                    navController.navigate(Route.FilmScreen().getRouteWithArgs(id = effect.movieID)) {
+                        launchSingleTop = true
+                        popUpTo(navController.graph.findStartDestination().id) {
+                            inclusive = false
+                        }
+                    }
+                }
             }
         }
     }
