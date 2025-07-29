@@ -1,12 +1,11 @@
 package com.example.movieapp.data.remote.repository.movie
 
-import android.util.Log
 import com.example.movieapp.common.movie.ApiMapper
 import com.example.movieapp.data.remote.api.movie.MovieApiService
 import com.example.movieapp.data.remote.models.movie.MovieDto
 import com.example.movieapp.domain.models.movie.Movie
 import com.example.movieapp.domain.repository.movie.MovieRepository
-import com.example.movieapp.utils.Response
+import com.example.movieapp.common.Response
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
@@ -22,9 +21,6 @@ class MovieRepositoryImpl(
             emit(Response.Success(this))
         }
     }.catch { error ->
-
-        Log.d("LordMiau", "Message = ${error.message}")
-        Log.d("LordMiau", "Cause = ${error.cause}")
         emit(Response.Error(error))
     }
 

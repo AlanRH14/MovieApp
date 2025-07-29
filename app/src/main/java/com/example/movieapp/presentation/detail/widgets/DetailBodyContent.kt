@@ -104,7 +104,7 @@ fun DetailBodyContent(
                         }
                     }
 
-                    Spacer(modifier = Modifier.height(ItemSpacing))
+                    Spacer(modifier = Modifier.height(DefaultPadding))
 
                     MovieInfoItem(
                         infoItem = movieDetail.language,
@@ -118,7 +118,7 @@ fun DetailBodyContent(
                         title = stringResource(R.string.production_countries)
                     )
 
-                    Spacer(modifier = Modifier.height(ItemSpacing))
+                    Spacer(modifier = Modifier.height(DefaultPadding))
 
                     Text(
                         text = "Reviews",
@@ -133,7 +133,6 @@ fun DetailBodyContent(
                     Spacer(modifier = Modifier.height(ItemSpacing))
 
                     MoreLikeThis(
-                        fetchMovies = { onEvent(DetailUIEvent.OnFetch) },
                         isMovieLoading = isMovieLoading,
                         movies = movies,
                         onMovieClick = { onEvent(DetailUIEvent.OnClicked(movieID = it)) }
