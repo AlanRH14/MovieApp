@@ -28,16 +28,16 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun DetailScreen(
     modifier: Modifier = Modifier,
-    movieDetailViewModel: MovieDetailViewModel = koinViewModel(),
+    detailViewModel: DetailViewModel = koinViewModel(),
     movieID: Int = -1,
     navController: NavHostController,
 ) {
-    val state by movieDetailViewModel.detailState.collectAsStateWithLifecycle()
+    val state by detailViewModel.detailState.collectAsStateWithLifecycle()
 
     LaunchedEffect(key1 = true) {
-        movieDetailViewModel.onEvent(DetailUIEvent.OnFetchDetailById(movieID = movieID))
+        detailViewModel.onEvent(DetailUIEvent.OnFetchDetailById(movieID = movieID))
 
-        movieDetailViewModel.effect.collectLatest { effect ->
+        detailViewModel.effect.collectLatest { effect ->
             when (effect) {
                 is DetailEffect.NavigateToBack -> navController.popBackStack()
                 is DetailEffect.NavigateToDetail -> {
@@ -81,7 +81,7 @@ fun DetailScreen(
                             .height(topItemHeight)
                             .align(Alignment.TopCenter),
                         movieDetail = movieDetail,
-                        onEvent = movieDetailViewModel::onEvent
+                        onEvent = detailViewModel::onEvent
                     )
 
                     DetailBodyContent(
@@ -91,7 +91,7 @@ fun DetailScreen(
                         movieDetail = movieDetail,
                         movies = state.movies,
                         isMovieLoading = state.isMovieLoading,
-                        onEvent = movieDetailViewModel::onEvent,
+                        onEvent = detailViewModel::onEvent,
                     )
                 }
             }

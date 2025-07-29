@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-class MovieDetailViewModel(
+class DetailViewModel(
     private val repository: MovieDetailRepository
 ) : ViewModel() {
 
