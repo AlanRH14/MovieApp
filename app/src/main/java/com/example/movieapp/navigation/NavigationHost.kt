@@ -7,7 +7,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.toRoute
-import com.example.movieapp.presentation.detail.MovieDetailScreen
+import com.example.movieapp.presentation.detail.DetailScreen
 import com.example.movieapp.presentation.home.HomeScreen
 
 @Composable
@@ -27,7 +27,7 @@ fun NavigationHost(
 
         composable<Route.FilmScreen> { detailScreen ->
             val movieID = detailScreen.toRoute<Route.FilmScreen>().movieID
-            MovieDetailScreen(
+            DetailScreen(
                 movieID = movieID,
                 navController = navController
             )

@@ -26,7 +26,7 @@ import kotlinx.coroutines.flow.collectLatest
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun MovieDetailScreen(
+fun DetailScreen(
     modifier: Modifier = Modifier,
     movieDetailViewModel: MovieDetailViewModel = koinViewModel(),
     movieID: Int = -1,
