@@ -22,6 +22,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation.NavGraph.Companion.findStartDestination
+import androidx.navigation.NavHostController
+import com.example.movieapp.navigation.Route
 import com.example.movieapp.presentation.home.widgets.TopContent
 import com.example.movieapp.presentation.home.widgets.BodyContent
 import com.example.movieapp.presentation.home.widgets.shimmer.HomeLoadingScreen
@@ -35,7 +38,8 @@ import org.koin.compose.viewmodel.koinViewModel
 fun HomeScreen(
     modifier: Modifier = Modifier,
     homeViewModel: HomeViewModel = koinViewModel(),
-    onMovieClick: (id: Int) -> Unit
+    onMovieClick: (id: Int) -> Unit,
+    navController: NavHostController
 ) {
     var isAutoScrolling by remember {
         mutableStateOf(true)
@@ -54,7 +58,14 @@ fun HomeScreen(
         homeViewModel.effect.collectLatest { effect ->
             when (effect) {
                 is HomeEffect.NavigateToDetailMovie -> {
-
+                    navController.navigate(
+                        Route.FilmScreen().getRouteWithArgs(id = effect.movieID)
+                    ) {
+                        launchSingleTop = true
+                        popUpTo(navController.graph.findStartDestination().id) {
+                            inclusive = false
+                        }
+                    }
                 }
             }
         }
@@ -117,7 +128,7 @@ fun HomeScreen(
                                     .heightIn(min = topItemHeight)
                                     .align(Alignment.TopCenter),
                                 movie = state.discoverMovies[index],
-                                onMovieClick = { onMovieClick(it) }
+                                onEvent = homeViewModel::onEvent
                             )
                         }
                     } else {
@@ -126,7 +137,7 @@ fun HomeScreen(
                                 .heightIn(min = topItemHeight)
                                 .align(Alignment.TopCenter),
                             movie = state.discoverMovies[page],
-                            onMovieClick = { onMovieClick(it) }
+                            onEvent = homeViewModel::onEvent
                         )
                     }
                 }

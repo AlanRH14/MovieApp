@@ -34,7 +34,8 @@ fun NavigationHost(
                             inclusive = false
                         }
                     }
-                }
+                },
+                navController = navController
             )
         }
 
