@@ -18,7 +18,7 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import com.example.movieapp.navigation.Route
 import com.example.movieapp.presentation.detail.mvi.DetailEffect
-import com.example.movieapp.presentation.detail.mvi.MovieDetailUIEvent
+import com.example.movieapp.presentation.detail.mvi.DetailUIEvent
 import com.example.movieapp.presentation.detail.widgets.DetailBodyContent
 import com.example.movieapp.presentation.detail.widgets.DetailTopContent
 import com.example.movieapp.presentation.detail.widgets.shimmer.DetailLoadingScreen
@@ -35,7 +35,7 @@ fun MovieDetailScreen(
     val state by movieDetailViewModel.detailState.collectAsStateWithLifecycle()
 
     LaunchedEffect(key1 = true) {
-        movieDetailViewModel.onEvent(MovieDetailUIEvent.OnFetchMovieDetailById(movieID = movieID))
+        movieDetailViewModel.onEvent(DetailUIEvent.OnFetchDetailById(movieID = movieID))
 
         movieDetailViewModel.effect.collectLatest { effect ->
             when (effect) {

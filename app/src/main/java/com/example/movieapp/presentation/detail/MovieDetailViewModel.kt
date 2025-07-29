@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.movieapp.domain.repository.movie_detail.MovieDetailRepository
 import com.example.movieapp.presentation.detail.mvi.DetailState
 import com.example.movieapp.presentation.detail.mvi.DetailEffect
-import com.example.movieapp.presentation.detail.mvi.MovieDetailUIEvent
+import com.example.movieapp.presentation.detail.mvi.DetailUIEvent
 import com.example.movieapp.utils.collectAndHandle
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -24,13 +24,13 @@ class MovieDetailViewModel(
     private val _effect = MutableSharedFlow<DetailEffect>()
     val effect = _effect.asSharedFlow()
 
-    fun onEvent(event: MovieDetailUIEvent) {
+    fun onEvent(event: DetailUIEvent) {
         when (event) {
-            is MovieDetailUIEvent.OnFetchMovieDetailById -> fetchMovieDetailById(movieID = event.movieID)
-            is MovieDetailUIEvent.OnFetchMovie -> fetchMovie()
-            is MovieDetailUIEvent.OnMovieClicked -> navigateToMovieDetail(movieID = event.movieID)
-            is MovieDetailUIEvent.OnActorClicked -> Unit
-            is MovieDetailUIEvent.OnNavigateToBack -> navigateToBack()
+            is DetailUIEvent.OnFetchDetailById -> fetchMovieDetailById(movieID = event.movieID)
+            is DetailUIEvent.OnFetch -> fetchMovie()
+            is DetailUIEvent.OnClicked -> navigateToMovieDetail(movieID = event.movieID)
+            is DetailUIEvent.OnActorClicked -> Unit
+            is DetailUIEvent.OnNavigateToBack -> navigateToBack()
         }
     }
 

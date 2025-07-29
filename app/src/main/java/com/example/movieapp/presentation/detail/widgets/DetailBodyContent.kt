@@ -22,7 +22,7 @@ import com.example.movieapp.R
 import com.example.movieapp.domain.models.movie.Movie
 import com.example.movieapp.domain.models.movie_detail.MovieDetail
 import com.example.movieapp.presentation.components.HeaderMovieList
-import com.example.movieapp.presentation.detail.mvi.MovieDetailUIEvent
+import com.example.movieapp.presentation.detail.mvi.DetailUIEvent
 import com.example.movieapp.presentation.detail.components.ActionIconButton
 import com.example.movieapp.presentation.detail.components.ActorItem
 import com.example.movieapp.presentation.detail.components.GenreInfo
@@ -37,7 +37,7 @@ fun DetailBodyContent(
     movieDetail: MovieDetail,
     movies: List<Movie>,
     isMovieLoading: Boolean,
-    onEvent: (MovieDetailUIEvent) -> Unit,
+    onEvent: (DetailUIEvent) -> Unit,
 ) {
     LazyColumn(modifier) {
         item {
@@ -98,7 +98,7 @@ fun DetailBodyContent(
                                 modifier = Modifier
                                     .weight(1F)
                                     .padding(horizontal = ItemSpacing)
-                                    .clickable { onEvent(MovieDetailUIEvent.OnActorClicked(actorID = cast.id)) },
+                                    .clickable { onEvent(DetailUIEvent.OnActorClicked(actorID = cast.id)) },
                                 cast = cast
                             )
                         }
@@ -133,10 +133,10 @@ fun DetailBodyContent(
                     Spacer(modifier = Modifier.height(ItemSpacing))
 
                     MoreLikeThis(
-                        fetchMovies = { onEvent(MovieDetailUIEvent.OnFetchMovie) },
+                        fetchMovies = { onEvent(DetailUIEvent.OnFetch) },
                         isMovieLoading = isMovieLoading,
                         movies = movies,
-                        onMovieClick = { onEvent(MovieDetailUIEvent.OnMovieClicked(movieID = it)) }
+                        onMovieClick = { onEvent(DetailUIEvent.OnClicked(movieID = it)) }
                     )
                 }
             }
