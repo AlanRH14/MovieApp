@@ -13,6 +13,7 @@ import androidx.compose.ui.res.stringResource
 import com.example.movieapp.R
 import com.example.movieapp.domain.models.movie.Movie
 import com.example.movieapp.presentation.components.HeaderMovieList
+import com.example.movieapp.presentation.home.HomeUIEvent
 import com.example.movieapp.presentation.home.components.MovieCoverImage
 import com.example.movieapp.ui.theme.ItemSpacing
 
@@ -21,7 +22,7 @@ fun BodyContent(
     modifier: Modifier = Modifier,
     discoverMovies: List<Movie>,
     trendingMovies: List<Movie>,
-    onMovieClick: (id: Int) -> Unit
+    onEvent: (HomeUIEvent) -> Unit
 ) {
     LazyColumn(modifier = modifier) {
         item {
@@ -36,7 +37,7 @@ fun BodyContent(
                         items(discoverMovies) { discoverMovie ->
                             MovieCoverImage(
                                 movie = discoverMovie,
-                                onMovieClick = onMovieClick
+                                onMovieClick = { onEvent(HomeUIEvent.OnMovieClicked(movieID = it)) }
                             )
                         }
                     }
@@ -50,7 +51,7 @@ fun BodyContent(
                         items(trendingMovies) { trendingMovie ->
                             MovieCoverImage(
                                 movie = trendingMovie,
-                                onMovieClick = onMovieClick
+                                onMovieClick = { onEvent(HomeUIEvent.OnMovieClicked(movieID = it)) }
                             )
                         }
                     }

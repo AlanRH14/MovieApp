@@ -23,7 +23,7 @@ class HomeViewModel(
 
     fun onEvent(event: HomeUIEvent) {
         when (event) {
-            is HomeUIEvent.OnMovieClicked -> Unit
+            is HomeUIEvent.OnMovieClicked -> navigateToMovieDetail(movieID = event.movieID)
             is HomeUIEvent.OnFetchDiscoverMovie -> fetchDiscoverMovie()
             is HomeUIEvent.OnFetchTrendingMovie -> fetchTrendingMovie()
         }
@@ -67,5 +67,11 @@ class HomeViewModel(
                 }
             },
         )
+    }
+
+    private fun navigateToMovieDetail(movieID: Int) {
+        viewModelScope.launch {
+            _effect.emit(HomeEffect.NavigateToDetailMovie(movieID = movieID))
+        }
     }
 }

@@ -23,19 +23,8 @@ fun NavigationHost(
         navController = navController,
         startDestination = Route.HomeScreen().route
     ) {
-        composable(
-            route = Route.HomeScreen().route,
-        ) {
-            HomeScreen(
-                onMovieClick = {
-                    navController.navigate(Route.FilmScreen().getRouteWithArgs(id = it)) {
-                        launchSingleTop = true
-                        popUpTo(navController.graph.findStartDestination().id) {
-                            inclusive = false
-                        }
-                    }
-                }
-            )
+        composable(route = Route.HomeScreen().route) {
+            HomeScreen(navController = navController)
         }
 
         composable(
