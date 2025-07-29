@@ -31,10 +31,6 @@ class MovieDetailViewModel(
         }
     }
 
-    init {
-        fetchMovieDetailById()
-    }
-
     private fun fetchMovieDetailById() = viewModelScope.launch {
         if (id == -1) {
             _detailState.update {

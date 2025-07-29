@@ -9,24 +9,39 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation.NavHostController
 import com.example.movieapp.presentation.detail.widgets.DetailBodyContent
 import com.example.movieapp.presentation.detail.widgets.DetailTopContent
 import com.example.movieapp.presentation.detail.widgets.shimmer.DetailLoadingScreen
+import kotlinx.coroutines.flow.collectLatest
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun MovieDetailScreen(
     modifier: Modifier = Modifier,
     movieDetailViewModel: MovieDetailViewModel = koinViewModel(),
+    movieID: Int = -1,
+    navController: NavHostController,
     onNavigateUp: () -> Unit,
     onMovieClick: (Int) -> Unit,
     onActorClick: (Int) -> Unit
 ) {
     val state by movieDetailViewModel.detailState.collectAsStateWithLifecycle()
+
+    LaunchedEffect(key1 = true) {
+        movieDetailViewModel.onEvent(MovieDetailUIEvent.OnFetchMovieDetailById(movieID = movieID))
+
+        movieDetailViewModel.effect.collectLatest { effect ->
+            when (effect) {
+                is MovieDetailEffect.NavigateToBack -> navController.popBackStack()
+            }
+        }
+    }
 
     DetailLoadingScreen(isLoading = state.isLoading)
 
