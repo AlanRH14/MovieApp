@@ -1,6 +1,5 @@
 package com.example.movieapp.presentation.detail
 
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.movieapp.domain.repository.movie_detail.MovieDetailRepository
