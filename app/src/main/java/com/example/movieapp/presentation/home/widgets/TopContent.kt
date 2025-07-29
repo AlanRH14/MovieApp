@@ -12,7 +12,6 @@ import androidx.compose.ui.res.stringResource
 import com.example.movieapp.R
 import com.example.movieapp.domain.models.movie.Movie
 import com.example.movieapp.presentation.components.GenericImage
-import com.example.movieapp.presentation.home.HomeEffect
 import com.example.movieapp.presentation.home.HomeUIEvent
 import com.example.movieapp.ui.theme.ItemSpacing
 
