@@ -16,6 +16,7 @@ import androidx.compose.ui.res.stringResource
 import com.example.movieapp.R
 import com.example.movieapp.domain.models.movie_detail.MovieDetail
 import com.example.movieapp.presentation.components.GenericImage
+import com.example.movieapp.presentation.detail.MovieDetailUIEvent
 import com.example.movieapp.presentation.detail.components.DetailComponent
 import com.example.movieapp.ui.theme.ItemSpacing
 
@@ -23,11 +24,11 @@ import com.example.movieapp.ui.theme.ItemSpacing
 fun DetailTopContent(
     modifier: Modifier = Modifier,
     movieDetail: MovieDetail,
-    onNavigateToBack: () -> Unit
+    onEvent: (MovieDetailUIEvent) -> Unit
 ) {
 
     Box(modifier = modifier.fillMaxWidth()) {
-        IconButton(onClick = onNavigateToBack) {
+        IconButton(onClick = { onEvent(MovieDetailUIEvent.OnNavigateToBack) }) {
             Icon(
                 modifier = Modifier.align(Alignment.TopStart),
                 imageVector = Icons.AutoMirrored.Default.ArrowBackIos,
