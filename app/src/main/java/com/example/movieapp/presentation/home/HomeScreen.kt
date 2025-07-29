@@ -22,12 +22,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.movieapp.presentation.home.widgets.TopContent
 import com.example.movieapp.presentation.home.widgets.BodyContent
 import com.example.movieapp.presentation.home.widgets.shimmer.HomeLoadingScreen
 import com.example.movieapp.ui.theme.DefaultPadding
 import com.example.movieapp.ui.theme.ItemSpacing
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.collectLatest
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
@@ -45,6 +47,19 @@ fun HomeScreen(
         pageCount = { state.discoverMovies.size }
     )
     val isDragged by pagerState.interactionSource.collectIsDraggedAsState()
+
+    LaunchedEffect(key1 = true) {
+        homeViewModel.onEvent(HomeUIEvent.OnFetchDiscoverMovie)
+        homeViewModel.onEvent(HomeUIEvent.OnFetchTrendingMovie)
+
+        homeViewModel.effect.collectLatest { effect ->
+            when (effect) {
+                is HomeEffect.NavigateToDetailMovie -> {
+
+                }
+            }
+        }
+    }
 
     LaunchedEffect(key1 = pagerState.currentPage) {
         if (isDragged) {
