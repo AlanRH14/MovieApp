@@ -82,9 +82,7 @@ fun MovieDetailScreen(
                         movieDetail = movieDetail,
                         movies = state.movies,
                         isMovieLoading = state.isMovieLoading,
-                        fetchMovies = movieDetailViewModel::fetchMovie,
-                        onMovieClick = onMovieClick,
-                        onActorClick = onActorClick
+                        onEvent = movieDetailViewModel::onEvent,
                     )
                 }
             }

@@ -42,7 +42,7 @@ fun NavigationHost(
                     }
                 },
                 onActorClick = {},
-
+                navController = navController,
             )
         }
     }
