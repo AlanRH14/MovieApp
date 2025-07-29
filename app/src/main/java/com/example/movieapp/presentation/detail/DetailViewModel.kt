@@ -1,36 +1,46 @@
 package com.example.movieapp.presentation.detail
 
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.movieapp.domain.repository.movie_detail.MovieDetailRepository
+import com.example.movieapp.presentation.detail.mvi.DetailState
+import com.example.movieapp.presentation.detail.mvi.DetailEffect
+import com.example.movieapp.presentation.detail.mvi.DetailUIEvent
 import com.example.movieapp.utils.collectAndHandle
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-class MovieDetailViewModel(
-    private val repository: MovieDetailRepository,
-    savedStateHandle: SavedStateHandle
+class DetailViewModel(
+    private val repository: MovieDetailRepository
 ) : ViewModel() {
 
     private val _detailState = MutableStateFlow(DetailState())
     val detailState = _detailState.asStateFlow()
 
-    val id: Int = savedStateHandle.get<Int>("id") ?: -1
+    private val _effect = MutableSharedFlow<DetailEffect>()
+    val effect = _effect.asSharedFlow()
 
-    init {
-        fetchMovieDetailById()
+    fun onEvent(event: DetailUIEvent) {
+        when (event) {
+            is DetailUIEvent.OnFetchDetailById -> fetchMovieDetailById(movieID = event.movieID)
+            is DetailUIEvent.OnFetch -> fetchMovie()
+            is DetailUIEvent.OnClicked -> navigateToMovieDetail(movieID = event.movieID)
+            is DetailUIEvent.OnActorClicked -> Unit
+            is DetailUIEvent.OnNavigateToBack -> navigateToBack()
+        }
     }
 
-    private fun fetchMovieDetailById() = viewModelScope.launch {
-        if (id == -1) {
+    private fun fetchMovieDetailById(movieID: Int) = viewModelScope.launch {
+        if (movieID <= 0) {
             _detailState.update {
                 it.copy(isLoading = false, error = "Movie not found")
             }
         } else {
-            repository.fetchMovieDetail(movieId = id).collectAndHandle(
+            repository.fetchMovieDetail(movieId = movieID).collectAndHandle(
                 onLoading = {
                     _detailState.update {
                         it.copy(isLoading = true, error = null)
@@ -52,7 +62,7 @@ class MovieDetailViewModel(
         }
     }
 
-    fun fetchMovie() = viewModelScope.launch {
+    private fun fetchMovie() = viewModelScope.launch {
         repository.fetchMovie().collectAndHandle(
             onLoading = {
                 _detailState.update {
@@ -70,5 +80,17 @@ class MovieDetailViewModel(
                 }
             }
         )
+    }
+
+    private fun navigateToBack() {
+        viewModelScope.launch {
+            _effect.emit(DetailEffect.NavigateToBack)
+        }
+    }
+
+    private fun navigateToMovieDetail(movieID: Int) {
+        viewModelScope.launch {
+            _effect.emit(DetailEffect.NavigateToDetail(movieID = movieID))
+        }
     }
 }

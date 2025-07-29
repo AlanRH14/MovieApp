@@ -9,24 +9,48 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation.NavGraph.Companion.findStartDestination
+import androidx.navigation.NavHostController
+import com.example.movieapp.navigation.Route
+import com.example.movieapp.presentation.detail.mvi.DetailEffect
+import com.example.movieapp.presentation.detail.mvi.DetailUIEvent
 import com.example.movieapp.presentation.detail.widgets.DetailBodyContent
 import com.example.movieapp.presentation.detail.widgets.DetailTopContent
 import com.example.movieapp.presentation.detail.widgets.shimmer.DetailLoadingScreen
+import kotlinx.coroutines.flow.collectLatest
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun MovieDetailScreen(
+fun DetailScreen(
     modifier: Modifier = Modifier,
-    movieDetailViewModel: MovieDetailViewModel = koinViewModel(),
-    onNavigateUp: () -> Unit,
-    onMovieClick: (Int) -> Unit,
-    onActorClick: (Int) -> Unit
+    detailViewModel: DetailViewModel = koinViewModel(),
+    movieID: Int = -1,
+    navController: NavHostController,
 ) {
-    val state by movieDetailViewModel.detailState.collectAsStateWithLifecycle()
+    val state by detailViewModel.detailState.collectAsStateWithLifecycle()
+
+    LaunchedEffect(key1 = true) {
+        detailViewModel.onEvent(DetailUIEvent.OnFetchDetailById(movieID = movieID))
+
+        detailViewModel.effect.collectLatest { effect ->
+            when (effect) {
+                is DetailEffect.NavigateToBack -> navController.popBackStack()
+                is DetailEffect.NavigateToDetail -> {
+                    navController.navigate(Route.FilmScreen(movieID = effect.movieID)) {
+                        launchSingleTop = true
+                        popUpTo(navController.graph.findStartDestination().id) {
+                            inclusive = false
+                        }
+                    }
+                }
+            }
+        }
+    }
 
     DetailLoadingScreen(isLoading = state.isLoading)
 
@@ -57,7 +81,7 @@ fun MovieDetailScreen(
                             .height(topItemHeight)
                             .align(Alignment.TopCenter),
                         movieDetail = movieDetail,
-                        onNavigateUp = onNavigateUp
+                        onEvent = detailViewModel::onEvent
                     )
 
                     DetailBodyContent(
@@ -67,9 +91,7 @@ fun MovieDetailScreen(
                         movieDetail = movieDetail,
                         movies = state.movies,
                         isMovieLoading = state.isMovieLoading,
-                        fetchMovies = movieDetailViewModel::fetchMovie,
-                        onMovieClick = onMovieClick,
-                        onActorClick = onActorClick
+                        onEvent = detailViewModel::onEvent,
                     )
                 }
             }

@@ -21,7 +21,8 @@ import androidx.compose.ui.text.font.FontWeight
 import com.example.movieapp.R
 import com.example.movieapp.domain.models.movie.Movie
 import com.example.movieapp.domain.models.movie_detail.MovieDetail
-import com.example.movieapp.presentation.components.HeaderMovieList
+import com.example.movieapp.presentation.components.HeaderList
+import com.example.movieapp.presentation.detail.mvi.DetailUIEvent
 import com.example.movieapp.presentation.detail.components.ActionIconButton
 import com.example.movieapp.presentation.detail.components.ActorItem
 import com.example.movieapp.presentation.detail.components.GenreInfo
@@ -36,9 +37,7 @@ fun DetailBodyContent(
     movieDetail: MovieDetail,
     movies: List<Movie>,
     isMovieLoading: Boolean,
-    fetchMovies: () -> Unit,
-    onMovieClick: (Int) -> Unit,
-    onActorClick: (Int) -> Unit
+    onEvent: (DetailUIEvent) -> Unit,
 ) {
     LazyColumn(modifier) {
         item {
@@ -88,7 +87,7 @@ fun DetailBodyContent(
                         }
                     }
 
-                    HeaderMovieList(
+                    HeaderList(
                         title = stringResource(R.string.cast_crew),
                         contentDescription = stringResource(R.string.cast_crew_button)
                     )
@@ -99,7 +98,7 @@ fun DetailBodyContent(
                                 modifier = Modifier
                                     .weight(1F)
                                     .padding(horizontal = ItemSpacing)
-                                    .clickable { onActorClick(cast.id) },
+                                    .clickable { onEvent(DetailUIEvent.OnActorClicked(actorID = cast.id)) },
                                 cast = cast
                             )
                         }
@@ -134,10 +133,10 @@ fun DetailBodyContent(
                     Spacer(modifier = Modifier.height(ItemSpacing))
 
                     MoreLikeThis(
-                        fetchMovies = fetchMovies,
+                        fetchMovies = { onEvent(DetailUIEvent.OnFetch) },
                         isMovieLoading = isMovieLoading,
                         movies = movies,
-                        onMovieClick = onMovieClick
+                        onMovieClick = { onEvent(DetailUIEvent.OnClicked(movieID = it)) }
                     )
                 }
             }

@@ -12,7 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.example.movieapp.R
 import com.example.movieapp.domain.models.movie.Movie
-import com.example.movieapp.presentation.components.HeaderMovieList
+import com.example.movieapp.presentation.components.HeaderList
 import com.example.movieapp.presentation.home.mvi.HomeUIEvent
 import com.example.movieapp.presentation.home.components.MovieCoverImage
 import com.example.movieapp.ui.theme.ItemSpacing
@@ -28,7 +28,7 @@ fun BodyContent(
         item {
             Card(modifier = Modifier.fillMaxWidth()) {
                 Column(modifier = Modifier.padding(horizontal = ItemSpacing)) {
-                    HeaderMovieList(
+                    HeaderList(
                         title = stringResource(R.string.discover_movies),
                         contentDescription = stringResource(R.string.more_discover_movies_button)
                     )
@@ -42,7 +42,7 @@ fun BodyContent(
                         }
                     }
 
-                    HeaderMovieList(
+                    HeaderList(
                         title = stringResource(R.string.trending_now),
                         contentDescription = stringResource(R.string.trending_now_button)
                     )
