@@ -13,7 +13,7 @@ import androidx.compose.ui.res.stringResource
 import com.example.movieapp.R
 import com.example.movieapp.domain.models.movie.Movie
 import com.example.movieapp.presentation.components.HeaderMovieList
-import com.example.movieapp.presentation.home.HomeUIEvent
+import com.example.movieapp.presentation.home.mvi.HomeUIEvent
 import com.example.movieapp.presentation.home.components.MovieCoverImage
 import com.example.movieapp.ui.theme.ItemSpacing
 

@@ -26,6 +26,7 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import com.example.movieapp.navigation.Route
 import com.example.movieapp.presentation.home.mvi.HomeEffect
+import com.example.movieapp.presentation.home.mvi.HomeUIEvent
 import com.example.movieapp.presentation.home.widgets.TopContent
 import com.example.movieapp.presentation.home.widgets.BodyContent
 import com.example.movieapp.presentation.home.widgets.shimmer.HomeLoadingScreen
