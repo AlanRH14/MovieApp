@@ -29,9 +29,6 @@ fun MovieDetailScreen(
     movieDetailViewModel: MovieDetailViewModel = koinViewModel(),
     movieID: Int = -1,
     navController: NavHostController,
-    onNavigateUp: () -> Unit,
-    onMovieClick: (Int) -> Unit,
-    onActorClick: (Int) -> Unit
 ) {
     val state by movieDetailViewModel.detailState.collectAsStateWithLifecycle()
 

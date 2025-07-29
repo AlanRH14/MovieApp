@@ -31,19 +31,7 @@ fun NavigationHost(
             route = Route.FilmScreen().routeWithArgs,
             arguments = listOf(navArgument(name = "id") { type = NavType.IntType })
         ) {
-            MovieDetailScreen(
-                onNavigateUp = { navController.navigateUp() },
-                onMovieClick = {
-                    navController.navigate(Route.FilmScreen().getRouteWithArgs(id = it)) {
-                        launchSingleTop = true
-                        popUpTo(navController.graph.findStartDestination().id) {
-                            inclusive = false
-                        }
-                    }
-                },
-                onActorClick = {},
-                navController = navController,
-            )
+            MovieDetailScreen(navController = navController)
         }
     }
 }
