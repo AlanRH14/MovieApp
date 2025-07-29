@@ -21,9 +21,9 @@ fun NavigationHost(
     NavHost(
         modifier = modifier.fillMaxSize(),
         navController = navController,
-        startDestination = Route.HomeScreen().route
+        startDestination = Route.HomeScreen
     ) {
-        composable(route = Route.HomeScreen().route) {
+        composable<Route.HomeScreen> {
             HomeScreen(navController = navController)
         }
 
