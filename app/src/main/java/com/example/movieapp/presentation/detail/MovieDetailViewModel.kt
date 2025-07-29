@@ -13,8 +13,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class MovieDetailViewModel(
-    private val repository: MovieDetailRepository,
-    savedStateHandle: SavedStateHandle
+    private val repository: MovieDetailRepository
 ) : ViewModel() {
 
     private val _detailState = MutableStateFlow(DetailState())
@@ -22,8 +21,6 @@ class MovieDetailViewModel(
 
     private val _effect = MutableSharedFlow<MovieDetailEffect>()
     val effect = _effect.asSharedFlow()
-
-    val id: Int = savedStateHandle.get<Int>("id") ?: -1
 
     fun onEvent(event: MovieDetailUIEvent) {
         when (event) {
