@@ -22,6 +22,7 @@ import com.example.movieapp.R
 import com.example.movieapp.domain.models.movie.Movie
 import com.example.movieapp.domain.models.movie_detail.MovieDetail
 import com.example.movieapp.presentation.components.HeaderMovieList
+import com.example.movieapp.presentation.detail.MovieDetailUIEvent
 import com.example.movieapp.presentation.detail.components.ActionIconButton
 import com.example.movieapp.presentation.detail.components.ActorItem
 import com.example.movieapp.presentation.detail.components.GenreInfo
@@ -36,9 +37,7 @@ fun DetailBodyContent(
     movieDetail: MovieDetail,
     movies: List<Movie>,
     isMovieLoading: Boolean,
-    fetchMovies: () -> Unit,
-    onMovieClick: (Int) -> Unit,
-    onActorClick: (Int) -> Unit
+    onEvent: (MovieDetailUIEvent) -> Unit,
 ) {
     LazyColumn(modifier) {
         item {
@@ -134,10 +133,10 @@ fun DetailBodyContent(
                     Spacer(modifier = Modifier.height(ItemSpacing))
 
                     MoreLikeThis(
-                        fetchMovies = fetchMovies,
+                        fetchMovies = { onEvent(MovieDetailUIEvent.OnFetchMovie) },
                         isMovieLoading = isMovieLoading,
                         movies = movies,
-                        onMovieClick = onMovieClick
+                        onMovieClick = { onEvent(MovieDetailUIEvent.OnMovieClicked(movieID = it)) }
                     )
                 }
             }
