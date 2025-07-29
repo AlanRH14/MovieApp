@@ -1,6 +1,5 @@
 package com.example.movieapp.data.remote.repository.movie
 
-import android.util.Log
 import com.example.movieapp.common.movie.ApiMapper
 import com.example.movieapp.data.remote.api.movie.MovieApiService
 import com.example.movieapp.data.remote.models.movie.MovieDto
@@ -22,9 +21,6 @@ class MovieRepositoryImpl(
             emit(Response.Success(this))
         }
     }.catch { error ->
-
-        Log.d("LordMiau", "Message = ${error.message}")
-        Log.d("LordMiau", "Cause = ${error.cause}")
         emit(Response.Error(error))
     }
 
