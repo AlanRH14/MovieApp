@@ -133,7 +133,6 @@ fun DetailBodyContent(
                     Spacer(modifier = Modifier.height(ItemSpacing))
 
                     MoreLikeThis(
-                        fetchMovies = { onEvent(DetailUIEvent.OnFetch) },
                         isMovieLoading = isMovieLoading,
                         movies = movies,
                         onMovieClick = { onEvent(DetailUIEvent.OnClicked(movieID = it)) }

@@ -36,7 +36,7 @@ fun DetailScreen(
 
     LaunchedEffect(key1 = true) {
         detailViewModel.onEvent(DetailUIEvent.OnFetchDetailById(movieID = movieID))
-
+        detailViewModel.onEvent(DetailUIEvent.OnFetch)
         detailViewModel.effect.collectLatest { effect ->
             when (effect) {
                 is DetailEffect.NavigateToBack -> navController.popBackStack()
