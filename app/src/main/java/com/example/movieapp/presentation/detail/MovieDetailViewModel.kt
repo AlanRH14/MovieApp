@@ -28,6 +28,8 @@ class MovieDetailViewModel(
     fun onEvent(event: MovieDetailUIEvent) {
         when (event) {
             is MovieDetailUIEvent.OnFetchMovieDetailById -> fetchMovieDetailById()
+            is MovieDetailUIEvent.OnFetchMovie -> fetchMovie()
+            is MovieDetailUIEvent.OnNavigateToBack -> navigateToBack()
         }
     }
 
@@ -59,7 +61,7 @@ class MovieDetailViewModel(
         }
     }
 
-    fun fetchMovie() = viewModelScope.launch {
+    private fun fetchMovie() = viewModelScope.launch {
         repository.fetchMovie().collectAndHandle(
             onLoading = {
                 _detailState.update {
