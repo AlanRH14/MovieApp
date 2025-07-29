@@ -22,7 +22,11 @@ class HomeViewModel(
     val effect = _effect.asSharedFlow()
 
     fun onEvent(event: HomeUIEvent) {
-
+        when (event) {
+            is HomeUIEvent.OnMovieClicked -> Unit
+            is HomeUIEvent.OnFetchDiscoverMovie -> Unit
+            is HomeUIEvent.OnFetchTrendingMovie -> Unit
+        }
     }
 
     init {
