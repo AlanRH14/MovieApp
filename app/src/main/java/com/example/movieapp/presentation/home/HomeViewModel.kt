@@ -69,7 +69,7 @@ class HomeViewModel(
         )
     }
 
-    private fun navigateToMovieDetail(movieID: String) {
+    private fun navigateToMovieDetail(movieID: Int) {
         viewModelScope.launch {
             _effect.emit(HomeEffect.NavigateToDetailMovie(movieID = movieID))
         }
