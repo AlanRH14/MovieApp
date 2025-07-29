@@ -1,4 +1,4 @@
-package com.example.movieapp.presentation.detail
+package com.example.movieapp.presentation.detail.mvi
 
 sealed interface MovieDetailEffect {
     data object NavigateToBack: MovieDetailEffect
