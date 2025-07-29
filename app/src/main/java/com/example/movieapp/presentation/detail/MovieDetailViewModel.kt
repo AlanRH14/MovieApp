@@ -27,21 +27,21 @@ class MovieDetailViewModel(
 
     fun onEvent(event: MovieDetailUIEvent) {
         when (event) {
-            is MovieDetailUIEvent.OnFetchMovieDetailById -> fetchMovieDetailById()
+            is MovieDetailUIEvent.OnFetchMovieDetailById -> fetchMovieDetailById(movieID = event.movieID)
             is MovieDetailUIEvent.OnFetchMovie -> fetchMovie()
-            is MovieDetailUIEvent.OnMovieClicked -> navigateToMovieDetail(event.movieID)
+            is MovieDetailUIEvent.OnMovieClicked -> navigateToMovieDetail(movieID = event.movieID)
             is MovieDetailUIEvent.OnActorClicked -> Unit
             is MovieDetailUIEvent.OnNavigateToBack -> navigateToBack()
         }
     }
 
-    private fun fetchMovieDetailById() = viewModelScope.launch {
-        if (id == -1) {
+    private fun fetchMovieDetailById(movieID: Int) = viewModelScope.launch {
+        if (movieID <= 0) {
             _detailState.update {
                 it.copy(isLoading = false, error = "Movie not found")
             }
         } else {
-            repository.fetchMovieDetail(movieId = id).collectAndHandle(
+            repository.fetchMovieDetail(movieId = movieID).collectAndHandle(
                 onLoading = {
                     _detailState.update {
                         it.copy(isLoading = true, error = null)
