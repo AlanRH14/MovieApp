@@ -38,7 +38,6 @@ import org.koin.compose.viewmodel.koinViewModel
 fun HomeScreen(
     modifier: Modifier = Modifier,
     homeViewModel: HomeViewModel = koinViewModel(),
-    onMovieClick: (id: Int) -> Unit,
     navController: NavHostController
 ) {
     var isAutoScrolling by remember {
@@ -148,7 +147,7 @@ fun HomeScreen(
                         .heightIn(max = bodyItemHeight),
                     discoverMovies = state.discoverMovies,
                     trendingMovies = state.trendingMovies,
-                    onMovieClick = onMovieClick
+                    onEvent = homeViewModel::onEvent
                 )
             }
         }
