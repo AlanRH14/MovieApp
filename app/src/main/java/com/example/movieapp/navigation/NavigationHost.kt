@@ -41,7 +41,8 @@ fun NavigationHost(
                         }
                     }
                 },
-                onActorClick = {}
+                onActorClick = {},
+
             )
         }
     }
