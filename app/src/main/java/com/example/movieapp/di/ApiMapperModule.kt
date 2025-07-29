@@ -7,11 +7,11 @@ import com.example.movieapp.data.remote.models.movie.MovieDto
 import com.example.movieapp.data.remote.models.movie_detail.MovieDetailDto
 import com.example.movieapp.domain.models.movie.Movie
 import com.example.movieapp.domain.models.movie_detail.MovieDetail
+import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 val apiMapperModule = module {
+    single<ApiMapper<List<Movie>, MovieDto>>(named("MovieApiMapper")) { MovieApiMapperImpl() }
 
-    single<ApiMapper<List<Movie>, MovieDto>> { MovieApiMapperImpl() }
-
-    single<ApiMapper<MovieDetail, MovieDetailDto>> { MovieDetailMapperImpl() }
+    single<ApiMapper<MovieDetail, MovieDetailDto>>(named("MovieDetailApiMapper")) { MovieDetailMapperImpl() }
 }
