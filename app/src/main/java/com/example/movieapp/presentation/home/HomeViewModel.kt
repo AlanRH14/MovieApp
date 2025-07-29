@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.movieapp.domain.repository.movie.MovieRepository
 import com.example.movieapp.presentation.home.mvi.HomeEffect
+import com.example.movieapp.presentation.home.mvi.HomeState
 import com.example.movieapp.utils.collectAndHandle
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
