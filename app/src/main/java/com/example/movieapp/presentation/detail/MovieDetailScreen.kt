@@ -79,7 +79,7 @@ fun MovieDetailScreen(
                             .height(topItemHeight)
                             .align(Alignment.TopCenter),
                         movieDetail = movieDetail,
-                        onNavigateToBack = onNavigateUp
+                        onEvent = movieDetailViewModel::onEvent
                     )
 
                     DetailBodyContent(
