@@ -17,7 +17,7 @@ import androidx.compose.ui.text.font.FontWeight
 import com.example.movieapp.ui.theme.ItemSpacing
 
 @Composable
-fun HeaderMovieList(
+fun HeaderList(
     title: String,
     contentDescription: String? = null
 ) {

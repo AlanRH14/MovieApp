@@ -21,7 +21,7 @@ import androidx.compose.ui.text.font.FontWeight
 import com.example.movieapp.R
 import com.example.movieapp.domain.models.movie.Movie
 import com.example.movieapp.domain.models.movie_detail.MovieDetail
-import com.example.movieapp.presentation.components.HeaderMovieList
+import com.example.movieapp.presentation.components.HeaderList
 import com.example.movieapp.presentation.detail.mvi.DetailUIEvent
 import com.example.movieapp.presentation.detail.components.ActionIconButton
 import com.example.movieapp.presentation.detail.components.ActorItem
@@ -87,7 +87,7 @@ fun DetailBodyContent(
                         }
                     }
 
-                    HeaderMovieList(
+                    HeaderList(
                         title = stringResource(R.string.cast_crew),
                         contentDescription = stringResource(R.string.cast_crew_button)
                     )
