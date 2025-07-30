@@ -6,7 +6,7 @@ import com.example.movieapp.domain.models.movie.Movie
 import com.example.movieapp.utils.FormatValue.toDecimalValue
 import com.example.movieapp.utils.GenreConstants
 
-class MovieApiMapperImpl : ApiMapper<List<Movie>, MovieDto> {
+class MovieApiMapperImpl : ApiMapper<MovieDto, List<Movie>> {
 
     override fun mapToDomain(apiDto: MovieDto): List<Movie> {
         return apiDto.results?.map { result ->

@@ -11,7 +11,7 @@ import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 val apiMapperModule = module {
-    single<ApiMapper<List<Movie>, MovieDto>>(named("MovieApiMapper")) { MovieApiMapperImpl() }
+    single<ApiMapper<MovieDto, List<Movie>>>(named("MovieApiMapper")) { MovieApiMapperImpl() }
 
-    single<ApiMapper<MovieDetail, MovieDetailDto>>(named("MovieDetailApiMapper")) { MovieDetailMapperImpl() }
+    single<ApiMapper<MovieDetailDto, MovieDetail>>(named("MovieDetailApiMapper")) { MovieDetailMapperImpl() }
 }

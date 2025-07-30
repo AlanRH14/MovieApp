@@ -14,8 +14,8 @@ import kotlinx.coroutines.flow.flow
 
 class MovieDetailRepositoryImpl(
     private val movieDetailApiService: MovieDetailApiService,
-    private val apiDetailMapper: ApiMapper<MovieDetail, MovieDetailDto>,
-    private val apiMovieMapper: ApiMapper<List<Movie>, MovieDto>
+    private val apiDetailMapper: ApiMapper<MovieDetailDto, MovieDetail>,
+    private val apiMovieMapper: ApiMapper<MovieDto, List<Movie>>
 ) : MovieDetailRepository {
 
     override fun fetchMovieDetail(movieId: Int): Flow<Response<MovieDetail>> = flow {
