@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.flow
 
 class MovieRepositoryImpl(
     private val movieApiService: MovieApiService,
-    private val apiMapper: ApiMapper<List<Movie>, MovieDto>
+    private val apiMapper: ApiMapper<MovieDto, List<Movie>>
 ) : MovieRepository {
     override fun fetchDiscoverMovie(): Flow<Response<List<Movie>>> = flow {
         emit(Response.Loading)
