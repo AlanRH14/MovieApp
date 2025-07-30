@@ -10,7 +10,7 @@ import com.example.movieapp.utils.FormatValue.toDecimalValue
 import java.text.SimpleDateFormat
 import java.util.Locale
 
-class MovieDetailMapperImpl : ApiMapper<MovieDetail, MovieDetailDto> {
+class MovieDetailMapperImpl : ApiMapper<MovieDetailDto, MovieDetail> {
 
     private fun formatTimeStamp(
         patternInput: String = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",
