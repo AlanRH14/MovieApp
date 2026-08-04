@@ -13,7 +13,7 @@ import java.util.Locale
 class MovieDetailMapperImpl : ApiMapper<MovieDetailDto, MovieDetail> {
 
     private fun formatTimeStamp(
-        patternInput: String = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",
+        patternInput: String = "yyyy-MM-dd'T'HH:mm:ss'Z'",
         patternOutput: String = "E, MMM d, yy",
         time: String
     ): String {
@@ -45,9 +45,14 @@ class MovieDetailMapperImpl : ApiMapper<MovieDetailDto, MovieDetail> {
     private fun formatCast(castDto: List<CastDto?>?): List<Cast> {
         return castDto?.map {
             val genderRole = if (it?.gender == 2) "Actor" else "Actress"
+            val nameParts = it?.name?.split(" ", limit = 2)
+            val fistName = nameParts?.getOrNull(0) ?: ""
+            val lastName = nameParts?.getOrNull(1) ?: ""
+
             Cast(
                 id = it?.id ?: 0,
-                name = formatEmptyValue(it?.name),
+                fistName = formatEmptyValue(fistName),
+                lastName =  formatEmptyValue(lastName),
                 genderRole = genderRole,
                 character = formatEmptyValue(it?.character),
                 profilePath = it?.profilePath ?: ""

@@ -17,6 +17,7 @@ fun GenericImage(
     pathImage: String,
     contentDescription: String,
     placeholder: Painter? = null,
+    error: Painter? = null
 ) {
 
     val imgRequest = ImageRequest.Builder(LocalContext.current)
@@ -33,5 +34,6 @@ fun GenericImage(
             Log.d("LordMiau", "${it.result.throwable.message}")
         },
         placeholder = placeholder,
+        error = error
     )
 }

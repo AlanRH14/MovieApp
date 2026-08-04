@@ -15,6 +15,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.movieapp.R
 import com.example.movieapp.domain.models.movie_detail.Cast
@@ -37,7 +38,7 @@ fun ActorItem(
                 .clip(CircleShape),
             pathImage = cast.profilePath,
             contentDescription = stringResource(R.string.cast_image),
-            placeholder = painterResource(R.drawable.ic_person)
+            error = painterResource(R.drawable.ic_person)
         )
 
         Text(
@@ -59,4 +60,20 @@ fun ActorItem(
             fontWeight = FontWeight.Bold
         )
     }
+}
+
+@Composable
+@Preview
+private fun ActorItemPreview() {
+    ActorItem(
+        modifier = Modifier,
+        cast = Cast(
+            id = 0,
+            fistName = "Lord",
+            lastName = "Miau",
+            genderRole = "Director",
+            character = "",
+            profilePath = ""
+        )
+    )
 }

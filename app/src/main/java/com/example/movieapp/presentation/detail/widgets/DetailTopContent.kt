@@ -42,7 +42,7 @@ fun DetailTopContent(
                 .matchParentSize(),
             pathImage = movieDetail.posterPath,
             contentDescription = stringResource(R.string.detail_top_image),
-            placeholder = painterResource(id = R.drawable.bg_image_movie)
+            error = painterResource(id = R.drawable.bg_image_movie)
         )
 
         DetailComponent(
