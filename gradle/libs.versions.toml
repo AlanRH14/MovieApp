@@ -16,7 +16,7 @@ kotlinxSerialization = "1.9.0"
 loggingInterceptor = "5.1.0"
 koinAndroid = "4.1.1"
 navigationCompose = "2.9.4"
-coilCompose = "3.3.0"
+coilCompose = "3.5.0"
 coreSplashscreen = "1.2.0"
 
 [libraries]
