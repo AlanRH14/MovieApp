@@ -7,7 +7,9 @@ plugins {
 
 android {
     namespace = "com.example.movieapp"
-    compileSdk = 37
+    compileSdk {
+        version = release(37)
+    }
 
     defaultConfig {
         applicationId = "com.example.movieapp"
