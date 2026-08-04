@@ -13,7 +13,7 @@ import java.util.Locale
 class MovieDetailMapperImpl : ApiMapper<MovieDetailDto, MovieDetail> {
 
     private fun formatTimeStamp(
-        patternInput: String = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",
+        patternInput: String = "yyyy-MM-dd'T'HH:mm:ss'Z'",
         patternOutput: String = "E, MMM d, yy",
         time: String
     ): String {
