@@ -35,6 +35,7 @@ import com.example.movieapp.ui.theme.ItemSpacing
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import org.koin.compose.viewmodel.koinViewModel
+import kotlin.time.Duration.Companion.milliseconds
 
 @Composable
 fun HomeScreen(
@@ -75,7 +76,7 @@ fun HomeScreen(
             isAutoScrolling = false
         } else {
             isAutoScrolling = true
-            delay(5000)
+            delay(5000.milliseconds)
             with(pagerState) {
                 val target = if (currentPage < state.discoverMovies.size - 1)
                     currentPage + 1
